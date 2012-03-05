@@ -1,0 +1,16 @@
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-02-28 08:29:55
+project --topLevelPackage web --projectName web-app --java 6
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-02-28 08:30:00
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-02-28 08:30:09
+hint
+hint
+jpa setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+hint
+help
+web mvc setup
+hint
+help
+web mvc controller --class ~.mvc.StockController
+security setup
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2012-02-28 17:37:58
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2012-03-05 19:07:45
