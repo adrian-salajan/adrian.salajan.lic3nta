@@ -46,8 +46,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String updateProduct(@ModelAttribute("productOrdered") ProductOrdered po,
-			@ModelAttribute("bascket") Bascket bascket) {
+	public String updateProduct(@ModelAttribute("productOrdered") ProductOrdered po) {
 		try {
 			CategoryProductsDTO catProds = stockGateway.getCategoryProducts(po.getProduct().getCategoryId());
 			ProductDTO found = null;

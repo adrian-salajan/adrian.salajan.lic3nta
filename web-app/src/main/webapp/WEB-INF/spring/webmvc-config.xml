@@ -11,8 +11,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
                http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
                 
     <!-- The controllers are autodetected POJOs labeled with the @Controller annotation. -->
-    <context:component-scan base-package="web.*" use-default-filters="false">
-        <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+    <context:component-scan base-package="web.*" >
     </context:component-scan>
     
     <!-- Turns on support for mapping requests to Spring MVC @Controller methods
@@ -36,7 +35,6 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     <!-- Selects a static view for rendering without the need for an explicit controller -->
     <mvc:view-controller path="/login"/>
     <mvc:view-controller path="/" view-name="index"/>
-    <mvc:view-controller path="/uncaughtException"/>
     <mvc:view-controller path="/resourceNotFound"/>
     <mvc:view-controller path="/dataAccessFailure"/>
 
@@ -57,7 +55,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     <!-- This bean resolves specific types of exceptions to corresponding logical - view names for error views. 
     The default behaviour of DispatcherServlet - is to propagate all exceptions to the servlet 
     container: this will happen - here with all other types of exceptions. -->
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" p:defaultErrorView="uncaughtException">
+ <!--    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" p:defaultErrorView="uncaughtException">
         <property name="exceptionMappings">
             <props>
                 <prop key=".DataAccessException">dataAccessFailure</prop>
@@ -66,7 +64,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
                 <prop key=".MissingServletRequestParameterException">resourceNotFound</prop>
             </props>
         </property>
-    </bean>
+    </bean> -->
 
     <!-- Enable this for integration of file upload functionality -->
     <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver"/>
