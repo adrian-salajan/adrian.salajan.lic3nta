@@ -1,11 +1,18 @@
 package web.mvc.model;
 
+import javax.validation.constraints.AssertTrue;
+
 
 public class ProductOrdered {
 	
 	private Product product;
 	
 	int qty;
+	
+	@AssertTrue(message="The ordered quantity exeeds the available stock.")
+	public boolean isQuantityValid() {
+		return (qty >= 0) && (qty <= product.getStock());
+	}
 
 	public Product getProduct() {
 		return product;

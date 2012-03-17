@@ -1,14 +1,29 @@
 package web.mvc;
 
+import java.util.Map;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import adrian.comenziadapter.OrderGateway;
+
+import domain.Oferta;
+import domain.OfertaService;
+
+
+
+import web.converter.Converter;
 import web.mvc.model.Bascket;
 import web.mvc.model.BascketView;
 import web.mvc.model.ProductOrdered;
+import web.mvc.model.ShipmentPreferencesForm;
 
 @RequestMapping("/bascket")
 @Controller
@@ -16,6 +31,11 @@ public class BascketController {
 	
 	@Autowired
 	Bascket bascket;
+	
+	
+	@Autowired
+	@Qualifier("orderGateway")
+	OrderGateway ofertaService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showBascket(@ModelAttribute("view") BascketView view) {
@@ -28,7 +48,12 @@ public class BascketController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String update(@ModelAttribute("view") BascketView view) {
+	public String update(@ModelAttribute("view") @Valid BascketView view,
+			BindingResult binding, Map model) {
+		if (binding.hasErrors()) {
+			model.put("view", view);
+			return "bascket/show";
+		}
 		updateBascket(bascket, view);
 		populateUI(bascket, view);
 		return "bascket/show";
@@ -39,7 +64,45 @@ public class BascketController {
 			ProductOrdered old = bascket.getProducts().get(bascket.getProducts().indexOf(updatedPO));
 			old.setQty(updatedPO.getQty());
 		}
-		
+		bascket.setTotalSum(view.getTotalSum());
 	}
+	
+	@RequestMapping(value = "/step2", method = RequestMethod.POST)
+	public String goToStep2(@ModelAttribute("view") @Valid BascketView view,
+			BindingResult binding, Map model) {
+		if (binding.hasErrors()) {
+			model.put("view", view);
+			return "bascket/show";
+		}
+		updateBascket(bascket, view);
+		
+		initStep2(bascket, model);
+		
+		return "bascket.step2";
+	}
+
+	private void initStep2(Bascket bascket, Map model) {
+		int total = bascket.getTotalSum();
+		ShipmentPreferencesForm form = new ShipmentPreferencesForm();
+		if (total > 500) {
+			form.setAllowNegociation(true);
+		}
+		form.getRegions().add("Cluj");
+		form.getRegions().add("Timisoara");
+		form.getRegions().add("Bucuresti");
+		
+		model.put("shipmentPreferencesForm", form);
+	}
+	
+	@RequestMapping(value = "/step3", method = RequestMethod.POST)
+	public String confirmOrder(@ModelAttribute("shipmentPreferencesForm")
+			 ShipmentPreferencesForm form) {
+		
+		Oferta newOferta = Converter.createOferta(bascket,form);
+		Oferta added = ofertaService.add(newOferta, form.getClientInfo(), form.getRegion());
+		return "redirect:/index";
+	}
+
+	
 
 }

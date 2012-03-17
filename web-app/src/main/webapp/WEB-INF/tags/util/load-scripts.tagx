@@ -33,6 +33,12 @@
 			catId = category.options[category.selectedIndex].value;
 			location.href = "index?categoryId=" + catId;
 		}
+	   
+	   function submitBascket() {
+		   form = document.getElementById("bascketForm");
+		   form.action="/web-app/bascket/step2";
+		   form.submit();
+	   }
    </script>
   
   

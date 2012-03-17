@@ -17,7 +17,7 @@
         <intercept-url pattern="/**" access="permitAll" />
     </http>
     <!-- Configure Authentication mechanism -->
-    <authentication-manager alias="authenticationManager">
+    <authentication-manager>
         <!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
         <authentication-provider>
             <password-encoder hash="plaintext" />

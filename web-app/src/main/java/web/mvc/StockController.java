@@ -2,19 +2,23 @@ package web.mvc;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.WebRequest;
 
 import ro.ubb.StockAdapter.dto.CategoryDTO;
 import ro.ubb.StockAdapter.dto.CategoryProductsDTO;
@@ -38,7 +42,7 @@ public class StockController {
 	Bascket bascket;
 
     @RequestMapping(method = {RequestMethod.GET} )
-    public String index(@ModelAttribute("categoryView") CategoryView view,
+    public String index(@ModelAttribute("categoryView") CategoryView view, Map model,
     		@RequestParam(value = "categoryId", defaultValue = "-1") long categoryId) {
     	try {
     		if (categoryId != -1) {
@@ -53,7 +57,20 @@ public class StockController {
    
     
     
-    private void populateBasket(Bascket bascket,Long categoryId, List<ProductOrdered> productToOrdered) {
+    private void validateView(CategoryView view, Map model) {
+    	int index = 0;
+		for (ProductOrdered po : view.getProducts()) {
+			if (!po.isQuantityValid()) {
+				model.put("products[" + index +"].quantityValid.errors", "The ordered quantity exeeds the available stock.");
+				index++;
+			}
+		}
+		
+	}
+
+
+
+	private void populateBasket(Bascket bascket,Long categoryId, List<ProductOrdered> productToOrdered) {
 		 if ( ! bascket.getCategoryProducts().containsKey(categoryId)) {
 			 bascket.getCategoryProducts().put(categoryId, productToOrdered);
 		 }
@@ -79,16 +96,23 @@ public class StockController {
 
     
 	@RequestMapping(method = RequestMethod.POST)
-    public String updateBascket(@ModelAttribute("categoryView") CategoryView view) {
+    public String updateBascket(@ModelAttribute("categoryView") @Valid CategoryView view, 
+    		BindingResult binding, Map model, WebRequest request) {
     		try {
     			if (bascket.getCategoryProducts().containsKey(view.getSelectedCategoryId())) {
     				bascket.getCategoryProducts().put(view.getSelectedCategoryId(), view.getProducts());
     			}
     			populateUI(view, bascket);
+    			
+    			if (binding.hasErrors()) {
+    				model.put("categoryView", view);
+    				return "stock/index";
+    			}
     		} catch (StockGatewayException e) {
 				e.printStackTrace();
 			}
-        return "stock/index";
+    		 return "stock/index";
+       
     }
 	
 	

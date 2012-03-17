@@ -2,6 +2,8 @@ package web.mvc.model;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import ro.ubb.StockAdapter.dto.CategoryDTO;
 import ro.ubb.StockAdapter.dto.ProductDTO;
 
@@ -9,6 +11,7 @@ public class CategoryView {
 	
 	List<CategoryDTO> categories;
 	Long selectedCategoryId;
+	@Valid
 	List<ProductOrdered> products;
 	
 	public List<CategoryDTO> getCategories() {

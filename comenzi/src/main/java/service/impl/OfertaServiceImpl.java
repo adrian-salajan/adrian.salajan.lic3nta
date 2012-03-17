@@ -38,6 +38,7 @@ public class OfertaServiceImpl implements OfertaService {
 	@Override
 	@Transactional
 	public Collection<Oferta> getAll() {
+		System.out.println("rmi");
 		return dao.getAll();
 	}
 
@@ -78,10 +79,9 @@ public class OfertaServiceImpl implements OfertaService {
 	@Transactional
 	public Oferta comanda(Oferta oferta, String adresaLivrare) {
 		if (oferta.getStatus().equals(ComenziConstants.OFERTA_READY)) {
-			Comanda c = new Comanda();
+			Comanda c  = oferta.getComanda();
 			c.setShipAddress(adresaLivrare);
 			c.setCreated(new Date()); 
-			oferta.setComanda(c);
 			oferta.setLastModified(new Date());
 			oferta.setStatus(ComenziConstants.OFERTA_ORDERED);
 			dao.update(oferta);
@@ -124,11 +124,14 @@ public class OfertaServiceImpl implements OfertaService {
 	
 	@Override
 	@Transactional
-	public Oferta add(Oferta oferta, String client) {
+	public Oferta add(Oferta oferta, String client, String region) {
 		oferta.setStatus(ComenziConstants.OFERTA_NOUA);
 		oferta.setClient(client);
 		oferta.setCreated(new Date());
 		oferta.setLastModified(new Date());
+		Comanda c = new Comanda();
+		c.setShipAddressRegion(region);
+		oferta.setComanda(c);
 		dao.insert(oferta);
 		Oferta x = null;
 		try {

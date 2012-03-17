@@ -53,6 +53,7 @@ xmlns:spring="http://www.springframework.org/tags"
 						<security:authorize access="hasRole('ROLE_CLIENT')">
 			  				<td>	
 			  					<form:input path="products[${pstatus.index}].qty" />
+			  					<form:errors path="products[${pstatus.index}].quantityValid"></form:errors>
 			  				</td>
 			  			</security:authorize>
 				</tr>

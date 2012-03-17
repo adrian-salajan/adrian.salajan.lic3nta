@@ -11,7 +11,7 @@ xmlns:spring="http://www.springframework.org/tags"
   <spring:message code="label_stock_index" htmlEscape="false" var="title"/>
   
   <h3>Cart</h3>
-  <form:form modelAttribute="view" method="POST" action="bascket" >
+  <form:form modelAttribute="view" method="POST" action="bascket" id="bascketForm" >
 
   <table>
   <THEAD>
@@ -43,6 +43,7 @@ xmlns:spring="http://www.springframework.org/tags"
 						<security:authorize access="hasRole('ROLE_CLIENT')">
 			  				<td>	
 			  					<form:input path="products[${pstatus.index}].qty" />
+			  					<form:errors path="products[${pstatus.index}].quantityValid"></form:errors>
 			  				</td>
 			  			</security:authorize>
 				</tr>
@@ -50,7 +51,9 @@ xmlns:spring="http://www.springframework.org/tags"
   	
   </table>
   <security:authorize access="hasRole('ROLE_CLIENT')">
+  		Total: ${view.totalSum}
   		<form:button value="update" name="update" >Update</form:button>
+  		<a href="#" onclick="submitBascket();">Continue to Step 2</a>
   </security:authorize>
   </form:form>
 </div>

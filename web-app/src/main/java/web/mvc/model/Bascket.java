@@ -24,6 +24,17 @@ public class Bascket {
 		return products;
 	}
 	
+	int totalSum;
+
+	public int getTotalSum() {
+		return totalSum;
+	}
+
+	public void setTotalSum(int totalSum) {
+		this.totalSum = totalSum;
+	}
+	
+	
 	
 	
 	

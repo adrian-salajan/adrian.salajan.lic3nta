@@ -23,7 +23,7 @@ public class TestOfertaService {
 		
 		Oferta o = new Oferta();
 		Oferta x;
-		x = service.add(o, "adrian2");
+		x = service.add(o, "adrian2", "Cluj");
 		assertEquals("new", x.getStatus());
 	
 		Product p1 = new Product();

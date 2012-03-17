@@ -21,7 +21,7 @@ public interface OfertaService {
 
 	//-----------
 
-	public Oferta add(Oferta oferta, String client);
+	public Oferta add(Oferta oferta, String client, String region);
 	
 	public Oferta oferteaza(Oferta oferta);
 	public Oferta comanda(Oferta oferta,  String adresaLivrare);
