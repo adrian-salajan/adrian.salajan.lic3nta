@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+.invisible {
+	visibility: hidden;
+}
+
+.invisible {
+	visibility: visible;
+}
+

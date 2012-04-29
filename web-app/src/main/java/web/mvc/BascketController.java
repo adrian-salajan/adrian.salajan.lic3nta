@@ -1,11 +1,13 @@
 package web.mvc;
 
+import java.security.Principal;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +22,8 @@ import domain.OfertaService;
 
 
 import web.converter.Converter;
+import web.integration.IntegrationConstants;
+import web.integration.OfertaIntegrationService;
 import web.mvc.model.Bascket;
 import web.mvc.model.BascketView;
 import web.mvc.model.ProductOrdered;
@@ -36,6 +40,9 @@ public class BascketController {
 	@Autowired
 	@Qualifier("orderGateway")
 	OrderGateway ofertaService;
+	
+	@Autowired
+	OfertaIntegrationService integrationService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showBascket(@ModelAttribute("view") BascketView view) {
@@ -96,10 +103,18 @@ public class BascketController {
 	
 	@RequestMapping(value = "/step3", method = RequestMethod.POST)
 	public String confirmOrder(@ModelAttribute("shipmentPreferencesForm")
-			 ShipmentPreferencesForm form) {
+			 ShipmentPreferencesForm form, Principal principal) {
 		
 		Oferta newOferta = Converter.createOferta(bascket,form);
-		Oferta added = ofertaService.add(newOferta, form.getClientInfo(), form.getRegion());
+		Oferta added = ofertaService.add(newOferta, principal.getName(), form.getRegion(),form.getIsNegociated());
+		if (!form.getIsNegociated()) {
+			ofertaService.comanda(added.getId(), form.getAddress());
+		} 
+		String status = form.getIsNegociated() == true ? IntegrationConstants.QTY_UPDATED 
+				: IntegrationConstants.NOT_UPDATED;
+		integrationService.create(added.getId(),status);
+		
+		
 		return "redirect:/index";
 	}
 

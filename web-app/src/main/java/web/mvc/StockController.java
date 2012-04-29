@@ -1,5 +1,7 @@
 package web.mvc;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -119,6 +125,29 @@ public class StockController {
 	@ModelAttribute("bascket")
 	public Bascket initBascket() {
 		return new Bascket();
+	}
+	
+	@RequestMapping("/rolerd")
+	public String redirectForRole(Principal principal) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
+		List<String> roles = new ArrayList<String>();
+		
+		for (GrantedAuthority a : authorities) {
+			roles.add(a.getAuthority());
+		}
+		
+		
+		if (roles.contains("ROLE_SALES"))
+				return "redirect:/sales";
+		
+		if (roles.contains("ROLE_STOCK"))
+			return "redirect:/index";
+		
+		if (auth.getAuthorities().contains("ROLE_CLIENT"))
+				return "redirect:/index";
+		
+		return "redirect:/index";
 	}
 
 }

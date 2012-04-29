@@ -6,10 +6,17 @@
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
     <!-- HTTP security configurations -->
     <http auto-config="true" use-expressions="true">
-        <form-login login-processing-url="/resources/j_spring_security_check" 
-        login-page="/login" authentication-failure-url="/login?login_error=t"
-        default-target-url="/index" />
+        
+        <form-login 
+        	login-processing-url="/resources/j_spring_security_check" 
+        	login-page="/login" 
+        	authentication-failure-url="/login?login_error=t"
+        	default-target-url="/index/rolerd"  />
+        
         <logout logout-url="/resources/j_spring_security_logout" />
+        
+        
+        
         <!-- Configure these elements to secure URIs in your application -->
         <intercept-url pattern="/choices/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/member/**" access="isAuthenticated()" />
@@ -21,11 +28,11 @@
         <!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
         <authentication-provider>
             <password-encoder hash="plaintext" />
-            <user-service>
-                <user name="admin" password="admin" authorities="ROLE_ADMIN" />
-                 <user name="stock" password="stock" authorities="ROLE_STOCK" />
-                <user name="client" password="client" authorities="ROLE_CLIENT" />
-            </user-service>
+            <jdbc-user-service 
+            	data-source-ref="dataSource"  role-prefix="ROLE_"
+            	users-by-username-query="select username,password,enabled from userrr where username = ?"
+            	authorities-by-username-query="select username, rolee from userrr where username = ?"
+            	/>
         </authentication-provider>
     </authentication-manager>
 </beans:beans>

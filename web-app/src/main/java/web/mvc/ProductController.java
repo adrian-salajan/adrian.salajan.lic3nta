@@ -1,5 +1,6 @@
 package web.mvc;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -9,13 +10,17 @@ import javax.validation.Valid;
 import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import adrian.comenziadapter.OrderGateway;
 
 import ro.ubb.StockAdapter.dto.CategoryDTO;
 import ro.ubb.StockAdapter.dto.CategoryProductsDTO;
@@ -25,10 +30,13 @@ import ro.ubb.StockAdapter.gateway.StockGateway;
 import ro.ubb.StockAdapter.gateway.exceptions.StockGatewayException;
 
 import web.converter.Converter;
+import web.entity.Userrr;
 import web.mvc.model.AddProduct;
 import web.mvc.model.Bascket;
+import web.mvc.model.HistoryOrder;
 import web.mvc.model.Product;
 import web.mvc.model.ProductOrdered;
+import web.security.SecurityUtils;
 
 @RequestMapping("/product")
 @Controller
@@ -39,6 +47,13 @@ public class ProductController {
 	
 	@Autowired
 	Bascket bascket;
+	
+	@Autowired
+	@Qualifier("orderGateway")
+	OrderGateway ofertaService;
+	
+	@Autowired
+	SecurityUtils userDao;
 	
 	
 	@RequestMapping
@@ -128,4 +143,51 @@ public class ProductController {
 		}
 	}
 	
+	@RequestMapping(value="/ordersn", method = RequestMethod.GET)
+	public String viewOrdersForStock(Principal principal, ModelMap model) {
+		Userrr user = userDao.getUser(principal.getName());
+		
+		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
+		for (String r : user.getRegions()) {
+			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r)));
+		}
+		
+		List<HistoryOrder> oferteStock = filterUnprocessed(oferteRegionale);
+		
+		model.put("orders", oferteStock);
+		return "sales/orders";
+	}
+
+	private List<HistoryOrder> filterUnprocessed(
+			Collection<HistoryOrder> oferteRegionale) {
+		List<HistoryOrder> list = new ArrayList<HistoryOrder>(oferteRegionale.size());
+		for (HistoryOrder o : oferteRegionale) {
+			if (o.getStatus().equals("unprocessed")) {
+				list.add(o);
+			}
+		}
+		return list;
+	}
+	
+	private List<HistoryOrder> filterProcessing(
+			Collection<HistoryOrder> oferteRegionale) {
+		List<HistoryOrder> list = new ArrayList<HistoryOrder>(oferteRegionale.size());
+		for (HistoryOrder o : oferteRegionale) {
+			if (o.getStatus().equals("processing")) {
+				list.add(o);
+			}
+		}
+		return list;
+	}
+	
+	private List<HistoryOrder> filterDone(
+			Collection<HistoryOrder> oferteRegionale) {
+		List<HistoryOrder> list = new ArrayList<HistoryOrder>(oferteRegionale.size());
+		for (HistoryOrder o : oferteRegionale) {
+			if (o.getStatus().equals("processed")) {
+				list.add(o);
+			}
+		}
+		return list;
+	}
 }

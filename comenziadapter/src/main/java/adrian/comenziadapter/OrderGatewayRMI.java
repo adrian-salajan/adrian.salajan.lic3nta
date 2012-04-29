@@ -21,6 +21,10 @@ public class OrderGatewayRMI implements OrderGateway {
 	public Collection<Oferta> getByStatus(String status) {
 		return orders.getByStatus(status);
 	}
+	
+	public Collection<Oferta> getByRegion(String region) {
+		return orders.getByRegion(region);
+	}
 	public Collection<Oferta> getAll() {
 		return orders.getAll();
 	}
@@ -32,8 +36,8 @@ public class OrderGatewayRMI implements OrderGateway {
 	}
 	
 	
-	public void remove(Oferta oferta) {
-		orders.remove(oferta);
+	public void remove(Long ofertaId) {
+		orders.remove(ofertaId);
 	}
 	
 	
@@ -44,43 +48,52 @@ public class OrderGatewayRMI implements OrderGateway {
 
 	//-----------
 
-	public Oferta add(Oferta oferta, String client, String region) {
-		return orders.add(oferta, client, region);
+	public Oferta add(Oferta oferta, String client, String region,boolean negotiated) {
+		return orders.add(oferta, client, region, negotiated);
 	}
 	
-	public Oferta oferteaza(Oferta oferta) {
-		return orders.oferteaza(oferta);
+	public Oferta oferteaza(Long ofertaId) {
+		return orders.oferteaza(ofertaId);
 	}
-	public Oferta comanda(Oferta oferta,  String adresaLivrare) {
-		return orders.comanda(oferta, adresaLivrare);
+	public Oferta comanda(Long ofertaId,  String adresaLivrare) {
+		return orders.comanda(ofertaId, adresaLivrare);
 	}
-	public Oferta proceseazaComanda(Oferta oferta) {
-		return proceseazaComanda(oferta);
+	public Oferta proceseazaComanda(Long ofertaId) {
+		return proceseazaComanda(ofertaId);
 	}
-	public Oferta finalizeazaComanda(Oferta oferta) {
-		return orders.finalizeazaComanda(oferta);
+	public Oferta finalizeazaComanda(Long ofertaId) {
+		return orders.finalizeazaComanda(ofertaId);
 	}
 	
 	//-----
 	
-	public Oferta addProdus(Oferta oferta, Product product, int qty) {
-		return orders.addProdus(oferta,product, qty);
+	public Oferta addProdus(Long ofertaId, Product product, int qty) {
+		return orders.addProdus(ofertaId,product, qty);
 	}
-	public Oferta addProdus(Oferta oferta, Product product, int qty, long finalPrice) {
-		return orders.addProdus(oferta, product, qty, finalPrice);
+	public Oferta addProdus(Long ofertaId, Product product, int qty, long finalPrice) {
+		return orders.addProdus(ofertaId, product, qty, finalPrice);
 	}
-	public Oferta updatePriceProdus(Oferta oferta, Product product, long finalPrice) {
-		return orders.updatePriceProdus(oferta, product, finalPrice);
+	public Oferta updatePriceProdus(Long ofertaId, Long productId, long finalPrice) {
+		return orders.updatePriceProdus(ofertaId, productId, finalPrice);
 	}
-	public Oferta updateQuantityProdus(Oferta oferta, Product product, int qty) {
-		return orders.updateQuantityProdus(oferta, product, qty);
+	public Oferta updateQuantityProdus(Long ofertaId, Long productId, int qty) {
+		return orders.updateQuantityProdus(ofertaId, productId, qty);
 	}
-	public Oferta stergeProdus(Oferta oferta, Product product) {
-		return orders.stergeProdus(oferta, product);
+	public Oferta stergeProdus(Long ofertaId, Long productId) {
+		return orders.stergeProdus(ofertaId, productId);
 	}
 	
 	public void setOrders(OfertaService orders) {
 		this.orders = orders;
+	}
+	@Override
+	public Collection<Oferta> getByClient(String client) {
+		return orders.getByClient(client);
+	}
+	@Override
+	public Oferta cancel(Long ofertaId) {
+		return orders.cancel(ofertaId);
+		
 	}
 
 	

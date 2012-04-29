@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,7 +43,7 @@ public class Oferta implements Serializable, Cloneable {
 	@Column(name="last_modified")
 	private Date lastModified;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	@JoinTable(name="ofertaproduct",joinColumns = {@JoinColumn(name = "ofertaId")}, inverseJoinColumns = { @JoinColumn(name = "productId") } )
 	private Collection<Product> items = new ArrayList<Product>();
 	

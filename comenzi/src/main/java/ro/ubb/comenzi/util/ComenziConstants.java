@@ -10,5 +10,7 @@ public class ComenziConstants {
 	public static final String OFERTA_ORDER_PROCESSING = "processing";
 	public static final String OFERTA_ORDERED_DONE = "processed";
 	
+	public static final String OFERTA_CANCELED = "CANCELED";
+	
 
 }

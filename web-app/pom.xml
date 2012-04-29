@@ -483,6 +483,14 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring-security.version}</version>
         </dependency>
+        
+        <dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.5.1</version>
+		</dependency>
+            
+        
     </dependencies>
     <build>
         <plugins>
@@ -629,4 +637,30 @@
             </plugin>
         </plugins>
     </build>
+     <profiles>
+    	<profile>
+    		<!-- Use this profile to update DB: "mvn clean install -P liquibase-update" -->
+			<id>liquibase-update</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.liquibase</groupId>
+						<artifactId>liquibase-maven-plugin</artifactId>
+						<version>2.0.1</version>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<configuration>
+									<propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
+								</configuration>
+								<goals>
+									<goal>update</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+    </profiles>
 </project>

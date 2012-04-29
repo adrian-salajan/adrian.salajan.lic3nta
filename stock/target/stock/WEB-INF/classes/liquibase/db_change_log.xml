@@ -4,7 +4,79 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
 
-
+	<changeSet author="adrians" id="1">
+		<insert tableName="category">
+			<column name="id" valueNumeric="1" />
+			<column name="name" value="TV" />
+		</insert>
+	</changeSet>
+	<changeSet author="adrians" id="2">
+		<insert tableName="category">
+			<column name="id" valueNumeric="2" />
+			<column name="name" value="PC" />
+		</insert>
+	</changeSet>
+	<changeSet author="adrians" id="3">
+		<insert tableName="product">
+			<column name="id" valueNumeric="1" />
+			<column name="description" value="diag: 54cm, color" />
+			<column name="name" value="TV 54" />
+			<column name="price" valueNumeric="150" />
+			<column name="stock" valueNumeric="2" />
+		</insert>
+	</changeSet>
+	<changeSet author="adrians" id="4">
+		<insert tableName="product">
+			<column name="id" valueNumeric="2" />
+			<column name="description" value="diag: 80cm, color, LCD" />
+			<column name="name" value="TV 80L" />
+			<column name="price" valueNumeric="540" />
+			<column name="stock" valueNumeric="3" />
+		</insert>
+	</changeSet>
+	<changeSet author="adrians" id="5">
+		<insert tableName="product">
+			<column name="id" valueNumeric="3" />
+			<column name="description" value="INTEL" />
+			<column name="name" value="PC INTEL" />
+			<column name="price" valueNumeric="800" />
+			<column name="stock" valueNumeric="4" />
+		</insert>
+	</changeSet>
+		<changeSet author="adrians" id="6">
+		<insert tableName="product">
+			<column name="id" valueNumeric="4" />
+			<column name="description" value="AMD" />
+			<column name="name" value="PC AMD" />
+			<column name="price" valueNumeric="760" />
+			<column name="stock" valueNumeric="5" />
+		</insert>
+	</changeSet>
+	
+	<changeSet author="adrians" id="7">
+		<insert tableName="categoryproduct">
+			<column name="categoryid" valueNumeric="1" />
+			<column name="productid" valueNumeric="1" />
+		</insert>
+	</changeSet>
+	<changeSet author="adrians" id="8">
+		<insert tableName="categoryproduct">
+			<column name="categoryid" valueNumeric="1" />
+			<column name="productid" valueNumeric="2" />
+		</insert>
+	</changeSet>
+	<changeSet author="adrians" id="9">
+		<insert tableName="categoryproduct">
+			<column name="categoryid" valueNumeric="1" />
+			<column name="productid" valueNumeric="3" />
+		</insert>
+	</changeSet>
+	<changeSet author="adrians" id="10">
+		<insert tableName="categoryproduct">
+			<column name="categoryid" valueNumeric="1" />
+			<column name="productid" valueNumeric="4" />
+		</insert>
+	</changeSet>
 	
 	<changeSet author="adrians" id="11">
 		<sql>update categoryproduct set categoryid=2 where productid=3 or productid=4</sql>

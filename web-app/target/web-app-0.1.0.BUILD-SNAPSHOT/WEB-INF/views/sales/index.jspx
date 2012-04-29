@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+xmlns:spring="http://www.springframework.org/tags"
+ xmlns:c="http://java.sun.com/jsp/jstl/core" 
+ xmlns:security = "http://www.springframework.org/security/tags"
+ xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+ xmlns:form="http://www.springframework.org/tags/form"
+  version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <jsp:output omit-xml-declaration="yes"/>
+  <spring:message code="label_stock_index" htmlEscape="false" var="title"/>
+  
+   <security:authorize access="hasRole('ROLE_SALES')">
+	<table>
+	<th>Ref number</th>
+	<th>Region</th>
+	<th>Price</th>
+	<th>Status</th>
+	<th>Cr. date</th>
+	<th>Needs attention</th>
+		<c:forEach items="${orders}" var="order">
+			<tr>
+				<td><a href="/web-app/sales/${order.order.id}">${order.order.id}</a></td>
+				<td>${order.order.comanda.shipAddressRegion}</td>
+				<td>${order.price}</td>
+				<td>
+				 <c:choose>
+				 	<c:when test="${order.status == 'inprogress'}">
+				 		<img src="resources/images/negociere.png" />
+				 	</c:when>
+				 	<c:when test="${order.status == 'ready'}">
+				 		<img src="resources/images/ready.png" />
+				 	</c:when>
+				 	<c:when test="${order.status == 'unprocessed'}">
+				 		<img src="resources/images/comandat.png" />
+				 	</c:when>
+				 	<c:when test="${order.status == 'processing'}">
+				 		<img src="resources/images/procesare.png" />
+				 	</c:when>
+				 	<c:when test="${order.status == 'processed'}">
+				 		<img src="resources/images/done.png" />
+				 	</c:when>
+				 	<c:when test="${order.status == 'canceled'}">
+				 		<img src="resources/images/canceled.png" />
+				 	</c:when>
+				 </c:choose>
+				</td>
+				<td>${order.creationDate}</td>
+				<td>
+					<c:if test="${order.updateStatus == 'qy'}">
+						<img src="resources/images/updated.png" />
+					</c:if>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+	  	
+   </security:authorize>
+  	
+</div>
+

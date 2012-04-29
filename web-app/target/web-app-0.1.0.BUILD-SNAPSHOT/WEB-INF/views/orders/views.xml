@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition extends="default" name="orders/history">
+        <put-attribute name="body" value="/WEB-INF/views/orders/index.jspx"/>
+    </definition>
+
+
+    <definition extends="default" name="orders/order">
+        <put-attribute name="body" value="/WEB-INF/views/orders/order.jspx"/>
+    </definition>
+    
+      <definition extends="default" name="orders/lastStep">
+        <put-attribute name="body" value="/WEB-INF/views/orders/lastStep.jspx"/>
+    </definition>
+    
+</tiles-definitions>

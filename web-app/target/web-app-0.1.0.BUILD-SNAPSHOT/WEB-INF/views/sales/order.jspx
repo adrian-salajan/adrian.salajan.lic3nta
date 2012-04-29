@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+xmlns:spring="http://www.springframework.org/tags"
+ xmlns:c="http://java.sun.com/jsp/jstl/core" 
+ xmlns:security = "http://www.springframework.org/security/tags"
+ xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+ xmlns:form="http://www.springframework.org/tags/form"
+  version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <jsp:output omit-xml-declaration="yes"/>
+  <spring:message code="label_stock_index" htmlEscape="false" var="title"/>
+  
+   <security:authorize access="hasRole('ROLE_SALES')">
+   <table>
+   	<tr>
+   		<td>Viewing order </td>
+   		<td>${order.order.id}</td>
+   	</tr>
+   	<tr>
+   		<td>Total price </td>
+   		<td>${order.price}</td>
+   	</tr>
+   	<tr>
+   		<td>Status</td>
+   		<td>${order.status}</td>
+   	</tr>
+  </table>
+  <!-- ne - negociabila -->
+  	<c:if test="${order.status ne 'inprogress' }">
+  		<table>
+  			<CAPTION>Products</CAPTION>
+  			<th>Name</th>
+  			<th>Price/item</th>
+  			<th>Qty</th>
+  		
+  			<c:forEach items="${order.order.items}" var="p">
+  				<tr>
+  					<td>${p.name}</td>
+  					<td>${p.finalPrice}</td>
+  					<td>${p.quantity}</td>
+  					
+  				</tr>
+  			</c:forEach>
+  		</table>
+  	</c:if>
+  	<!-- negociabila -->
+  		<c:if test="${order.status eq 'inprogress' }">
+  		<form:form commandName="order" method="POST" modelAttribute="order" 
+  		action="/web-app/sales/${order.order.id}/update">
+	  		<table>
+	  			<CAPTION>Products</CAPTION>
+	  			<th>Name</th>
+	  			<th>Price/item</th>
+	  			<th>Qty</th>
+	  		
+	  			<c:forEach items="${order.order.items}" var="p" varStatus="row">
+	  				<tr>
+	  					<form:hidden path="order.items[${row.index}].id" />
+	  					<td>${p.name}<form:hidden path="order.items[${row.index}].name" /></td>
+	  					<form:hidden path="order.items[${row.index}].details" />
+	  					<form:hidden path="order.items[${row.index}].price" />
+	  					<td><form:input path="order.items[${row.index}].finalPrice" /></td>
+	  					<td>${p.quantity}<form:hidden path="order.items[${row.index}].quantity"/></td>
+	  					
+	  				</tr>
+	  			</c:forEach>
+	  		</table>
+	  		<input type="submit" />
+	  		<a href="/web-app/sales/${order.order.id}/finish">Make Offer</a>
+  		</form:form>
+  	</c:if>
+	  	
+   </security:authorize>
+  	
+</div>
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+xmlns:spring="http://www.springframework.org/tags"
+ xmlns:c="http://java.sun.com/jsp/jstl/core" 
+ xmlns:security = "http://www.springframework.org/security/tags"
+ xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+ xmlns:form="http://www.springframework.org/tags/form"
+  version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <jsp:output omit-xml-declaration="yes"/>
+  <spring:message code="label_stock_index" htmlEscape="false" var="title"/>
+  
+  <h3>Cart</h3>
+  <form:form modelAttribute="view" method="POST" action="bascket" id="bascketForm" >
+
+  <table>
+  <THEAD>
+  	<TR>
+  		<TH>Name</TH>
+  		<TH>Price</TH>
+  		<TH>Qty</TH>
+  	</TR>
+  </THEAD>
+  
+	<c:forEach items="${view.products}" var="p" varStatus="pstatus" >
+				<tr>
+						<security:authorize access="hasRole('ROLE_CLIENT')" var="isClient" >
+							<form:hidden path="products[${pstatus.index}].product.id" />
+				  			<form:hidden path="products[${pstatus.index}].product.name" />
+				  			<form:hidden path="products[${pstatus.index}].product.price" />
+				  			<form:hidden path="products[${pstatus.index}].product.stock" />
+				  			<form:hidden path="products[${pstatus.index}].product.description" />
+				  			<form:hidden path="products[${pstatus.index}].product.categoryId" />
+				  		</security:authorize>
+				  		
+				  			<c:url value="/product" var="productUrl">
+				  				<c:param name="id" value="${p.product.id}"></c:param>
+				  			</c:url>
+							<td><a href="${productUrl}">${p.product.name}</a></td>
+							<td>${p.product.price}</td>
+							<td>${p.product.stock}</td>
+
+						<security:authorize access="hasRole('ROLE_CLIENT')">
+			  				<td>	
+			  					<form:input path="products[${pstatus.index}].qty" />
+			  					<form:errors path="products[${pstatus.index}].quantityValid"></form:errors>
+			  				</td>
+			  			</security:authorize>
+				</tr>
+	</c:forEach>
+  	
+  </table>
+  <security:authorize access="hasRole('ROLE_CLIENT')">
+  		Total: ${view.totalSum}
+  		<form:button value="update" name="update" >Update</form:button>
+  		<a href="#" onclick="submitBascket();">Continue to Step 2</a>
+  </security:authorize>
+  </form:form>
+</div>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+
+	<changeSet author="adrianss" id="1">
+		<insert tableName="userrr">
+			<column name="id" valueNumeric="1" />
+			<column name="username" value="stefan" />
+			<column name="password" value="stefan" />
+			<column name="rolee" value="SALES" />
+			<column name="email" value="stefan@gmail.com" />
+		</insert>
+	</changeSet>
+	
+	<changeSet author="adrianss" id="2">
+		<insert tableName="userrr">
+			<column name="id" valueNumeric="2" />
+			<column name="username" value="bogdan" />
+			<column name="password" value="bogdan" />
+			<column name="rolee" value="SALES" />
+			<column name="email" value="bogdan@gmail.com" />
+		</insert>
+	</changeSet>
+	
+	<changeSet author="adrianss" id="3">
+		<insert tableName="userrr">
+			<column name="id" valueNumeric="3" />
+			<column name="username" value="adrian" />
+			<column name="password" value="adrian" />
+			<column name="rolee" value="CLIENT" />
+			<column name="email" value="blitzkrieg.adrian@gmail.com" />
+		</insert>
+	</changeSet>
+	
+	<changeSet author="adrianss" id="4">
+		<insert tableName="userrr_regions">
+			<column name="userrr" valueNumeric="1" />
+			<column name="regions" value="Cluj" />
+		</insert>
+	</changeSet>
+	
+	<changeSet author="adrianss" id="5">
+		<insert tableName="userrr_regions">
+			<column name="userrr" valueNumeric="2" />
+			<column name="regions" value="Timisoara" />
+		</insert>
+	</changeSet>
+	
+	<changeSet author="adrianss" id="6">
+		<insert tableName="userrr">
+			<column name="id" valueNumeric="4" />
+			<column name="username" value="stock" />
+			<column name="password" value="stock" />
+			<column name="rolee" value="STOCK" />
+			<column name="email" value="stock@gmail.com" />
+		</insert>
+	</changeSet>
+	
+
+	
+	
+</databaseChangeLog>

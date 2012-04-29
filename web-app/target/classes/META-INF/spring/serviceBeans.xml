@@ -12,8 +12,19 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd         
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-
+		<import resource="classpath*:springRMI.xml"/>
+		
+		
+	<bean id="orderGateway" class="adrian.comenziadapter.OrderGatewayRMI">
+		<property name="orders"  ref="orderService"></property>
+	</bean>
+	
 	<bean id="stockGateway" class="ro.ubb.StockAdapter.gateway.impl.StockGatewayJersey"/>
+	
+	 
+	
+
+
 	
 
 </beans>

@@ -65,6 +65,7 @@
           <string>WEB-INF/lib/spring-core-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/commons-logging-1.1.1.jar</string>
           <string>WEB-INF/lib/spring-expression-3.0.5.RELEASE.jar</string>
+          <string>WEB-INF/lib/stax-api-1.0-2.jar</string>
           <string>WEB-INF/lib/spring-oxm-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/spring-web-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/spring-webmvc-3.0.5.RELEASE.jar</string>
@@ -82,7 +83,6 @@
           <string>WEB-INF/lib/spring-tx-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/spring-jdbc-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/spring-orm-3.0.5.RELEASE.jar</string>
-          <string>WEB-INF/lib/spring-webmvc-portlet-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/spring-test-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/slf4j-simple-1.6.4.jar</string>
           <string>WEB-INF/lib/commons-dbcp-1.4.jar</string>
@@ -286,42 +286,6 @@
         <optional>false</optional>
       </dependency>
       <targetFileName>spring-orm-3.0.5.RELEASE.jar</targetFileName>
-    </org.apache.maven.plugin.war.util.DependencyInfo>
-    <org.apache.maven.plugin.war.util.DependencyInfo>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-web</artifactId>
-        <version>3.0.5.RELEASE</version>
-        <type>jar</type>
-        <scope>compile</scope>
-        <exclusions/>
-        <optional>false</optional>
-      </dependency>
-      <targetFileName>spring-web-3.0.5.RELEASE.jar</targetFileName>
-    </org.apache.maven.plugin.war.util.DependencyInfo>
-    <org.apache.maven.plugin.war.util.DependencyInfo>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc</artifactId>
-        <version>3.0.5.RELEASE</version>
-        <type>jar</type>
-        <scope>compile</scope>
-        <exclusions/>
-        <optional>false</optional>
-      </dependency>
-      <targetFileName>spring-webmvc-3.0.5.RELEASE.jar</targetFileName>
-    </org.apache.maven.plugin.war.util.DependencyInfo>
-    <org.apache.maven.plugin.war.util.DependencyInfo>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-webmvc-portlet</artifactId>
-        <version>3.0.5.RELEASE</version>
-        <type>jar</type>
-        <scope>compile</scope>
-        <exclusions/>
-        <optional>false</optional>
-      </dependency>
-      <targetFileName>spring-webmvc-portlet-3.0.5.RELEASE.jar</targetFileName>
     </org.apache.maven.plugin.war.util.DependencyInfo>
     <org.apache.maven.plugin.war.util.DependencyInfo>
       <dependency>

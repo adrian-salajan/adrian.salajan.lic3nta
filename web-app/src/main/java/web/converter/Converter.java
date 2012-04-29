@@ -14,6 +14,7 @@ import ro.ubb.StockAdapter.dto.PropertyDTO;
 import web.mvc.model.AddProduct;
 import web.mvc.model.Bascket;
 import web.mvc.model.CategoryAdd;
+import web.mvc.model.HistoryOrder;
 import web.mvc.model.Product;
 import web.mvc.model.ProductOrdered;
 import web.mvc.model.ShipmentPreferencesForm;
@@ -76,6 +77,18 @@ public class Converter {
 		dp.setDetails(po.getProduct().getDescription());
 		return dp;
 	}
+
+	public static Collection<HistoryOrder> toHistoryOrders(
+			Collection<Oferta> orders) {
+		Collection<HistoryOrder> historyOrders = new ArrayList<HistoryOrder>(orders.size());
+		for (Oferta of : orders) {
+			HistoryOrder h = new HistoryOrder();
+			h.setOrder(of);
+			historyOrders.add(h);
+		}
+		return historyOrders;
+	}
+	
 	
 
 }

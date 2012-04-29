@@ -9,33 +9,36 @@ public interface OfertaService {
 	public Collection<Oferta> getAll();
 	public Collection<Oferta> getOferteComandate();
 	public Collection<Oferta> getOferteNecomandate();
+	public Collection<Oferta> getByClient(String client);
+	public Collection<Oferta> getByRegion(String region);
+	
+	public void remove(Long ofertaId);
 	
 	
-	public void remove(Oferta oferta);
 	
 	
-	
-	
-	public void updateClient(Oferta oferta, String client);
+	public Oferta updateClient(Oferta oferta, String client);
 	
 
 	//-----------
 
-	public Oferta add(Oferta oferta, String client, String region);
+	public Oferta add(Oferta oferta, String client, String region,boolean negotiate );
 	
-	public Oferta oferteaza(Oferta oferta);
-	public Oferta comanda(Oferta oferta,  String adresaLivrare);
-	public Oferta proceseazaComanda(Oferta oferta);
-	public Oferta finalizeazaComanda(Oferta oferta);
+	public Oferta oferteaza(Long ofertaId);
+	public Oferta comanda(Long ofertaId,  String adresaLivrare);
+	public Oferta proceseazaComanda(Long ofertaId);
+	public Oferta finalizeazaComanda(Long ofertaId);
 	
 	//-----
 	
-	public Oferta addProdus(Oferta oferta, Product product, int qty);
-	public Oferta addProdus(Oferta oferta, Product product, int qty, long finalPrice);
-	public Oferta updatePriceProdus(Oferta oferta, Product product, long finalPrice);
-	public Oferta updateQuantityProdus(Oferta oferta, Product product, int qty);
+	public Oferta addProdus(Long ofertaId, Product product, int qty);
+	public Oferta addProdus(Long ofertaId, Product product, int qty, long finalPrice);
+	public Oferta updatePriceProdus(Long ofertaId, Long productId, long finalPrice);
+	public Oferta updateQuantityProdus(Long ofertaId, Long productId, int qty);
 	
-	public Oferta stergeProdus(Oferta oferta, Product product);
+	public Oferta stergeProdus(Long ofertaId, Long productId);
+	public Oferta cancel(Long ofertaId);
+	
 	
 	
 	

@@ -2,9 +2,11 @@ package ro.ubb.comenzi.dao.impl;
 
 import java.util.Collection;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.ResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -70,10 +72,23 @@ public class OfertaDaoHibernate implements OfertaDao {
 	}
 
 	@Override
-	public void update(Oferta oferta) {
+	public Oferta update(Oferta oferta) {
 		Session session = this.getSessionFactory().getCurrentSession();
-		session.merge(oferta);
+		Oferta updated = (Oferta) session.merge(oferta);
 		session.flush();
+		return updated;
+	}
+
+	@Override
+	public Collection<Oferta> getByClient(String client) {
+		return this.getSessionFactory().getCurrentSession().createCriteria(Oferta.class).add(Restrictions.eq("client", client))
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+	}
+
+	@Override
+	public Collection<Oferta> getByRegion(String region) {
+		return this.getSessionFactory().getCurrentSession().createCriteria(Oferta.class).add(Restrictions.eq("comanda.shipAddressRegion", region))
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	}
 	
 	
