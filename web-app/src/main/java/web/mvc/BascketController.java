@@ -24,6 +24,7 @@ import domain.OfertaService;
 import web.converter.Converter;
 import web.integration.IntegrationConstants;
 import web.integration.OfertaIntegrationService;
+import web.integration.ProductIntegrationService;
 import web.mvc.model.Bascket;
 import web.mvc.model.BascketView;
 import web.mvc.model.ProductOrdered;
@@ -43,6 +44,9 @@ public class BascketController {
 	
 	@Autowired
 	OfertaIntegrationService integrationService;
+	
+	@Autowired
+	ProductIntegrationService pintegrationService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showBascket(@ModelAttribute("view") BascketView view) {
@@ -106,7 +110,8 @@ public class BascketController {
 			 ShipmentPreferencesForm form, Principal principal) {
 		
 		Oferta newOferta = Converter.createOferta(bascket,form);
-		Oferta added = ofertaService.add(newOferta, principal.getName(), form.getRegion(),form.getIsNegociated());
+		Oferta added = ofertaService.add(newOferta, principal.getName(), form.getRegion(), form.getIsNegociated());
+		pintegrationService.mapProducts(bascket.getProducts(), added.getItems());
 		if (!form.getIsNegociated()) {
 			ofertaService.comanda(added.getId(), form.getAddress());
 		} 
@@ -114,7 +119,7 @@ public class BascketController {
 				: IntegrationConstants.NOT_UPDATED;
 		integrationService.create(added.getId(),status);
 		
-		
+		bascket.getCategoryProducts().clear();
 		return "redirect:/index";
 	}
 

@@ -144,7 +144,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/ordersn", method = RequestMethod.GET)
-	public String viewOrdersForStock(Principal principal, ModelMap model) {
+	public String viewOrdersNew(Principal principal, ModelMap model) {
 		Userrr user = userDao.getUser(principal.getName());
 		
 		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
@@ -153,6 +153,21 @@ public class ProductController {
 		}
 		
 		List<HistoryOrder> oferteStock = filterUnprocessed(oferteRegionale);
+		
+		model.put("orders", oferteStock);
+		return "sales/orders";
+	}
+	
+	@RequestMapping(value="/ordersp", method = RequestMethod.GET)
+	public String viewOrdersProcessing(Principal principal, ModelMap model) {
+		Userrr user = userDao.getUser(principal.getName());
+		
+		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
+		for (String r : user.getRegions()) {
+			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r)));
+		}
+		
+		List<HistoryOrder> oferteStock = filterProcessing(oferteRegionale);
 		
 		model.put("orders", oferteStock);
 		return "sales/orders";

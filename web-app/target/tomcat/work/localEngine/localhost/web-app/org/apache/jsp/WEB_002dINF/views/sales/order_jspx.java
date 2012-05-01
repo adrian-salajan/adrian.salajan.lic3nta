@@ -80,6 +80,8 @@ public final class order_jspx extends org.apache.jasper.runtime.HttpJspBase
         return;
       if (_jspx_meth_security_005fauthorize_005f0(_jspx_page_context))
         return;
+      if (_jspx_meth_security_005fauthorize_005f1(_jspx_page_context))
+        return;
       out.write("</div>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -574,6 +576,121 @@ public final class order_jspx extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspx_th_form_005fhidden_005f4.doFinally();
       _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody.reuse(_jspx_th_form_005fhidden_005f4);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_security_005fauthorize_005f1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  security:authorize
+    org.springframework.security.taglibs.authz.JspAuthorizeTag _jspx_th_security_005fauthorize_005f1 = (org.springframework.security.taglibs.authz.JspAuthorizeTag) _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005faccess.get(org.springframework.security.taglibs.authz.JspAuthorizeTag.class);
+    _jspx_th_security_005fauthorize_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_security_005fauthorize_005f1.setParent(null);
+    // /WEB-INF/views/sales/order.jspx(75,55) name = access type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_security_005fauthorize_005f1.setAccess("hasRole('ROLE_STOCK')");
+    int _jspx_eval_security_005fauthorize_005f1 = _jspx_th_security_005fauthorize_005f1.doStartTag();
+    if (_jspx_eval_security_005fauthorize_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      out.write("<table>");
+      out.write("<tr>");
+      out.write("<td>");
+      out.write("Viewing order ");
+      out.write("</td>");
+      out.write("<td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${order.order.id}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("</td>");
+      out.write("</tr>");
+      out.write("<tr>");
+      out.write("<td>");
+      out.write("Total price ");
+      out.write("</td>");
+      out.write("<td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${order.price}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("</td>");
+      out.write("</tr>");
+      out.write("<tr>");
+      out.write("<td>");
+      out.write("Status");
+      out.write("</td>");
+      out.write("<td>");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${order.status}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+      out.write("</td>");
+      out.write("</tr>");
+      out.write("</table>");
+      out.write("<table>");
+      out.write("<CAPTION>");
+      out.write("Products");
+      out.write("</CAPTION>");
+      out.write("<th>");
+      out.write("Name");
+      out.write("</th>");
+      out.write("<th>");
+      out.write("Price/item");
+      out.write("</th>");
+      out.write("<th>");
+      out.write('Q');
+      out.write('t');
+      out.write('y');
+      out.write("</th>");
+      if (_jspx_meth_c_005fforEach_005f2(_jspx_th_security_005fauthorize_005f1, _jspx_page_context))
+        return true;
+      out.write("</table>");
+      out.write("<a href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("/web-app/sales/${order.order.id}/process", java.lang.String.class, (PageContext)_jspx_page_context, null, false) + "\" target=\"_blank\">");
+      out.write("Process order");
+      out.write("</a>");
+    }
+    if (_jspx_th_security_005fauthorize_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005faccess.reuse(_jspx_th_security_005fauthorize_005f1);
+      return true;
+    }
+    _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005faccess.reuse(_jspx_th_security_005fauthorize_005f1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_005fforEach_005f2(javax.servlet.jsp.tagext.JspTag _jspx_th_security_005fauthorize_005f1, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_005fforEach_005f2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_005fforEach_005f2.setPageContext(_jspx_page_context);
+    _jspx_th_c_005fforEach_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_security_005fauthorize_005f1);
+    // /WEB-INF/views/sales/order.jspx(96,54) name = var type = java.lang.String reqTime = false required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setVar("p");
+    // /WEB-INF/views/sales/order.jspx(96,54) name = items type = javax.el.ValueExpression reqTime = true required = false fragment = false deferredValue = true expectedTypeName = java.lang.Object deferredMethod = false methodSignature = null
+    _jspx_th_c_005fforEach_005f2.setItems(new org.apache.jasper.el.JspValueExpression("/WEB-INF/views/sales/order.jspx(96,54) '${order.order.items}'",_el_expressionfactory.createValueExpression(_jspx_page_context.getELContext(),"${order.order.items}",java.lang.Object.class)).getValue(_jspx_page_context.getELContext()));
+    int[] _jspx_push_body_count_c_005fforEach_005f2 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_005fforEach_005f2 = _jspx_th_c_005fforEach_005f2.doStartTag();
+      if (_jspx_eval_c_005fforEach_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("<tr>");
+          out.write("<td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${p.name}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</td>");
+          out.write("<td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${p.finalPrice}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</td>");
+          out.write("<td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${p.quantity}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+          out.write("</td>");
+          out.write("</tr>");
+          int evalDoAfterBody = _jspx_th_c_005fforEach_005f2.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_005fforEach_005f2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_005fforEach_005f2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_005fforEach_005f2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_005fforEach_005f2.doFinally();
+      _005fjspx_005ftagPool_005fc_005fforEach_0026_005fvar_005fitems.reuse(_jspx_th_c_005fforEach_005f2);
     }
     return false;
   }

@@ -56,7 +56,6 @@ xmlns:spring="http://www.springframework.org/tags"
 	</table>
 	  	
    </security:authorize>
-   
     <security:authorize access="hasRole('ROLE_STOCK')">
 	<table>
 	<th>Ref number</th>

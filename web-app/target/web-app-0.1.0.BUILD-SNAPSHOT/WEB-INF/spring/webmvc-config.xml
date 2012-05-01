@@ -108,6 +108,10 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     </property>
   </bean>
   
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+    <property name="basename" value="views"/>
+  </bean>
+  
   <bean id="bascket" class="web.mvc.model.Bascket" scope="session">
   		<aop:scoped-proxy/>
   </bean>

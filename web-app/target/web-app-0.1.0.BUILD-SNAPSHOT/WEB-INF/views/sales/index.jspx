@@ -56,6 +56,38 @@ xmlns:spring="http://www.springframework.org/tags"
 	</table>
 	  	
    </security:authorize>
+    <security:authorize access="hasRole('ROLE_STOCK')">
+	<table>
+	<th>Ref number</th>
+	<th>Region</th>
+	<th>Price</th>
+	<th>Status</th>
+	<th>Cr. date</th>
+		<c:forEach items="${orders}" var="order">
+			<tr>
+				<td><a href="/web-app/sales/${order.order.id}">${order.order.id}</a></td>
+				<td>${order.order.comanda.shipAddressRegion}</td>
+				<td>${order.price}</td>
+				<td>
+				 <c:choose>
+				 	<c:when test="${order.status == 'unprocessed'}">
+				 		<img src="../resources/images/comandat.png" />
+				 	</c:when>
+				 	<c:when test="${order.status == 'processing'}">
+				 		<img src="../resources/images/procesare.png" />
+				 	</c:when>
+				 	<c:when test="${order.status == 'processed'}">
+				 		<img src="../resources/images/done.png" />
+				 	</c:when>
+				 </c:choose>
+				</td>
+				<td>${order.creationDate}</td>
+			
+			</tr>
+		</c:forEach>
+	</table>
+	  	
+   </security:authorize>
   	
 </div>
 

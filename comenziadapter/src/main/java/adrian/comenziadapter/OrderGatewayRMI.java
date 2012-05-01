@@ -59,7 +59,7 @@ public class OrderGatewayRMI implements OrderGateway {
 		return orders.comanda(ofertaId, adresaLivrare);
 	}
 	public Oferta proceseazaComanda(Long ofertaId) {
-		return proceseazaComanda(ofertaId);
+		return orders.proceseazaComanda(ofertaId);
 	}
 	public Oferta finalizeazaComanda(Long ofertaId) {
 		return orders.finalizeazaComanda(ofertaId);

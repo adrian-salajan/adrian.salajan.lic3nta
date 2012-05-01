@@ -9,7 +9,7 @@
 			<column name="id" valueNumeric="1" />
 			<column name="username" value="stefan" />
 			<column name="password" value="stefan" />
-			<column name="rolee" value="ROLE_SALES" />
+			<column name="rolee" value="SALES" />
 			<column name="email" value="stefan@gmail.com" />
 		</insert>
 	</changeSet>
@@ -19,7 +19,7 @@
 			<column name="id" valueNumeric="2" />
 			<column name="username" value="bogdan" />
 			<column name="password" value="bogdan" />
-			<column name="rolee" value="ROLE_SALES" />
+			<column name="rolee" value="SALES" />
 			<column name="email" value="bogdan@gmail.com" />
 		</insert>
 	</changeSet>
@@ -29,7 +29,7 @@
 			<column name="id" valueNumeric="3" />
 			<column name="username" value="adrian" />
 			<column name="password" value="adrian" />
-			<column name="rolee" value="ROLE_CLIENT" />
+			<column name="rolee" value="CLIENT" />
 			<column name="email" value="blitzkrieg.adrian@gmail.com" />
 		</insert>
 	</changeSet>
@@ -53,7 +53,7 @@
 			<column name="id" valueNumeric="4" />
 			<column name="username" value="stock" />
 			<column name="password" value="stock" />
-			<column name="rolee" value="ROLE_STOCK" />
+			<column name="rolee" value="STOCK" />
 			<column name="email" value="stock@gmail.com" />
 		</insert>
 	</changeSet>

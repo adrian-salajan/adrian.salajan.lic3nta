@@ -24,6 +24,7 @@ public interface StockGateway {
 	public void insertProduct(CategoryDTO category, ProductDTO product) throws StockGatewayException ;
 	public void deleteProduct(ProductDTO product) throws StockGatewayException;
 	public void updateProduct(ProductDTO product) throws StockGatewayException;
+	public ProductDTO getProduct(long productId, long categoryId) throws StockGatewayException;
 	 
 	
 

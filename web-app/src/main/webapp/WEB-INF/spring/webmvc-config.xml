@@ -108,8 +108,12 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     </property>
   </bean>
   
+  
   <bean id="bascket" class="web.mvc.model.Bascket" scope="session">
   		<aop:scoped-proxy/>
   </bean>
+  
+  <bean class="org.springframework.web.servlet.view.XmlViewResolver"
+	p:location="/WEB-INF/spring/jasper-views.xml"  p:order="0" />
   
 </beans>

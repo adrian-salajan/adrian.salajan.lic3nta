@@ -69,8 +69,39 @@ xmlns:spring="http://www.springframework.org/tags"
 	  		<a href="/web-app/sales/${order.order.id}/finish">Make Offer</a>
   		</form:form>
   	</c:if>
-	  	
    </security:authorize>
-  	
+   
+   
+   <security:authorize access="hasRole('ROLE_STOCK')">
+   <table>
+   	<tr>
+   		<td>Viewing order </td>
+   		<td>${order.order.id}</td>
+   	</tr>
+   	<tr>
+   		<td>Total price </td>
+   		<td>${order.price}</td>
+   	</tr>
+   	<tr>
+   		<td>Status</td>
+   		<td>${order.status}</td>
+   	</tr>
+  </table>
+  		<table>
+  			<CAPTION>Products</CAPTION>
+  			<th>Name</th>
+  			<th>Price/item</th>
+  			<th>Qty</th>
+  		
+  			<c:forEach items="${order.order.items}" var="p">
+  				<tr>
+  					<td>${p.name}</td>
+  					<td>${p.finalPrice}</td>
+  					<td>${p.quantity}</td>
+  				</tr>
+  			</c:forEach>
+  		</table>
+  		<a target="_blank" href="/web-app/sales/${order.order.id}/process">Process order</a>
+  	</security:authorize>
 </div>
 

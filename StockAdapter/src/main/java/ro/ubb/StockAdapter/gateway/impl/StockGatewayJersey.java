@@ -266,5 +266,13 @@ public class StockGatewayJersey implements StockGateway {
 		}
 	}
 
+	@Override
+	public ProductDTO getProduct(long productId, long categoryId) throws StockGatewayException {
+		Builder accept = client.resource(this.getRootResourceURI() + "/" + categoryId + "/product/" + productId).accept("application/xml").type("application/xml");
+		ClientResponse response = accept.get(ClientResponse.class);
+		ProductDTO dto = response.getEntity(ProductDTO.class);
+		return dto;
+	}
+
 
 }

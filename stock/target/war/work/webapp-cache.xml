@@ -65,7 +65,6 @@
           <string>WEB-INF/lib/spring-core-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/commons-logging-1.1.1.jar</string>
           <string>WEB-INF/lib/spring-expression-3.0.5.RELEASE.jar</string>
-          <string>WEB-INF/lib/stax-api-1.0-2.jar</string>
           <string>WEB-INF/lib/spring-oxm-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/spring-web-3.0.5.RELEASE.jar</string>
           <string>WEB-INF/lib/spring-webmvc-3.0.5.RELEASE.jar</string>

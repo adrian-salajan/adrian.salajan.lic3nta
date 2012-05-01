@@ -14,9 +14,14 @@
     	<security:authorize access="hasRole('ROLE_STOCK')" var="isStock">
 	    	<c:url value="/add"  context="/web-app/category" var="addcat"></c:url>
 	    	<c:url value="/add"  context="/web-app/product" var="addprod"></c:url>
+	    	<c:url value="/add"  context="/web-app/product" var="addprod"></c:url>
+	    	<c:url value="/ordersn"  context="/web-app/product" var="ordersn"></c:url>
+	    	<c:url value="/ordersp"  context="/web-app/product" var="ordersp"></c:url>
 	    	<ul>
 	    		<li><a href="${addcat}">Add Category</a></li>
 	    		<li><a href="${addprod}">Add Product</a></li>
+	    		<li><a href="${ordersn}">View new orders</a></li>
+	    		<li><a href="${ordersp}">View processing orders</a></li>
 	    	</ul>
     	</security:authorize>
     	
