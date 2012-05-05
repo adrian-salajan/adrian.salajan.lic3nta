@@ -16,7 +16,8 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005faction;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fbutton;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005ftextarea_0026_005frows_005fpath_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fbutton_0026_005fclass;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fif_0026_005ftest;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody;
 
@@ -33,7 +34,8 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005faction = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fform_005fbutton = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005ftextarea_0026_005frows_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fbutton_0026_005fclass = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fif_0026_005ftest = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
@@ -46,7 +48,8 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005faction.release();
     _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody.release();
     _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fnobody.release();
-    _005fjspx_005ftagPool_005fform_005fbutton.release();
+    _005fjspx_005ftagPool_005fform_005ftextarea_0026_005frows_005fpath_005fnobody.release();
+    _005fjspx_005ftagPool_005fform_005fbutton_0026_005fclass.release();
     _005fjspx_005ftagPool_005fc_005fif_0026_005ftest.release();
     _005fjspx_005ftagPool_005fc_005fout_0026_005fvalue_005fnobody.release();
   }
@@ -182,7 +185,7 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
           out.write("<table>");
           out.write("<tr>");
           out.write("<td>");
-          out.write("Description:");
+          out.write("Price:");
           out.write("</td>");
           out.write("<td>");
           if (_jspx_meth_form_005finput_005f1(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
@@ -191,7 +194,7 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
           out.write("</tr>");
           out.write("<tr>");
           out.write("<td>");
-          out.write("Price:");
+          out.write("Stock:");
           out.write("</td>");
           out.write("<td>");
           if (_jspx_meth_form_005finput_005f2(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
@@ -200,10 +203,10 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
           out.write("</tr>");
           out.write("<tr>");
           out.write("<td>");
-          out.write("Stock:");
+          out.write("Description:");
           out.write("</td>");
           out.write("<td>");
-          if (_jspx_meth_form_005finput_005f3(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
+          if (_jspx_meth_form_005ftextarea_005f0(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
             return true;
           out.write("</td>");
           out.write("</tr>");
@@ -318,8 +321,8 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f1 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
     _jspx_th_form_005finput_005f1.setPageContext(_jspx_page_context);
     _jspx_th_form_005finput_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/views/product/details.jspx(23,76) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_form_005finput_005f1.setPath("product.description");
+    // /WEB-INF/views/product/details.jspx(23,65) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005finput_005f1.setPath("product.price");
     int[] _jspx_push_body_count_form_005finput_005f1 = new int[] { 0 };
     try {
       int _jspx_eval_form_005finput_005f1 = _jspx_th_form_005finput_005f1.doStartTag();
@@ -346,7 +349,7 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
     _jspx_th_form_005finput_005f2.setPageContext(_jspx_page_context);
     _jspx_th_form_005finput_005f2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
     // /WEB-INF/views/product/details.jspx(26,65) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_form_005finput_005f2.setPath("product.price");
+    _jspx_th_form_005finput_005f2.setPath("product.stock");
     int[] _jspx_push_body_count_form_005finput_005f2 = new int[] { 0 };
     try {
       int _jspx_eval_form_005finput_005f2 = _jspx_th_form_005finput_005f2.doStartTag();
@@ -364,29 +367,31 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_form_005finput_005f3(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
+  private boolean _jspx_meth_form_005ftextarea_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
-    //  form:input
-    org.springframework.web.servlet.tags.form.InputTag _jspx_th_form_005finput_005f3 = (org.springframework.web.servlet.tags.form.InputTag) _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.InputTag.class);
-    _jspx_th_form_005finput_005f3.setPageContext(_jspx_page_context);
-    _jspx_th_form_005finput_005f3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/views/product/details.jspx(29,65) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_form_005finput_005f3.setPath("product.stock");
-    int[] _jspx_push_body_count_form_005finput_005f3 = new int[] { 0 };
+    //  form:textarea
+    org.springframework.web.servlet.tags.form.TextareaTag _jspx_th_form_005ftextarea_005f0 = (org.springframework.web.servlet.tags.form.TextareaTag) _005fjspx_005ftagPool_005fform_005ftextarea_0026_005frows_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.TextareaTag.class);
+    _jspx_th_form_005ftextarea_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_form_005ftextarea_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
+    // /WEB-INF/views/product/details.jspx(29,88) name = rows type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005ftextarea_005f0.setRows("5");
+    // /WEB-INF/views/product/details.jspx(29,88) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005ftextarea_005f0.setPath("product.description");
+    int[] _jspx_push_body_count_form_005ftextarea_005f0 = new int[] { 0 };
     try {
-      int _jspx_eval_form_005finput_005f3 = _jspx_th_form_005finput_005f3.doStartTag();
-      if (_jspx_th_form_005finput_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      int _jspx_eval_form_005ftextarea_005f0 = _jspx_th_form_005ftextarea_005f0.doStartTag();
+      if (_jspx_th_form_005ftextarea_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
         return true;
       }
     } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_form_005finput_005f3[0]-- > 0)
+      while (_jspx_push_body_count_form_005ftextarea_005f0[0]-- > 0)
         out = _jspx_page_context.popBody();
-      _jspx_th_form_005finput_005f3.doCatch(_jspx_exception);
+      _jspx_th_form_005ftextarea_005f0.doCatch(_jspx_exception);
     } finally {
-      _jspx_th_form_005finput_005f3.doFinally();
-      _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fnobody.reuse(_jspx_th_form_005finput_005f3);
+      _jspx_th_form_005ftextarea_005f0.doFinally();
+      _005fjspx_005ftagPool_005fform_005ftextarea_0026_005frows_005fpath_005fnobody.reuse(_jspx_th_form_005ftextarea_005f0);
     }
     return false;
   }
@@ -396,9 +401,11 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:button
-    org.springframework.web.servlet.tags.form.ButtonTag _jspx_th_form_005fbutton_005f0 = (org.springframework.web.servlet.tags.form.ButtonTag) _005fjspx_005ftagPool_005fform_005fbutton.get(org.springframework.web.servlet.tags.form.ButtonTag.class);
+    org.springframework.web.servlet.tags.form.ButtonTag _jspx_th_form_005fbutton_005f0 = (org.springframework.web.servlet.tags.form.ButtonTag) _005fjspx_005ftagPool_005fform_005fbutton_0026_005fclass.get(org.springframework.web.servlet.tags.form.ButtonTag.class);
     _jspx_th_form_005fbutton_005f0.setPageContext(_jspx_page_context);
     _jspx_th_form_005fbutton_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
+    // /WEB-INF/views/product/details.jspx(32,35) null
+    _jspx_th_form_005fbutton_005f0.setDynamicAttribute(null, "class", new String("button"));
     int[] _jspx_push_body_count_form_005fbutton_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_form_005fbutton_005f0 = _jspx_th_form_005fbutton_005f0.doStartTag();
@@ -419,7 +426,7 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_005fbutton_005f0.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_005fbutton_005f0.doFinally();
-      _005fjspx_005ftagPool_005fform_005fbutton.reuse(_jspx_th_form_005fbutton_005f0);
+      _005fjspx_005ftagPool_005fform_005fbutton_0026_005fclass.reuse(_jspx_th_form_005fbutton_005f0);
     }
     return false;
   }
@@ -445,14 +452,6 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
         out.write("<table>");
         out.write("<tr>");
         out.write("<td>");
-        out.write("Description:");
-        out.write("</td>");
-        out.write("<td>");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${productOrdered.product.description}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-        out.write("</td>");
-        out.write("</tr>");
-        out.write("<tr>");
-        out.write("<td>");
         out.write("Price:");
         out.write("</td>");
         out.write("<td>");
@@ -465,6 +464,14 @@ public final class details_jspx extends org.apache.jasper.runtime.HttpJspBase
         out.write("</td>");
         out.write("<td>");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${productOrdered.product.stock}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
+        out.write("</td>");
+        out.write("</tr>");
+        out.write("<tr>");
+        out.write("<td>");
+        out.write("Description:");
+        out.write("</td>");
+        out.write("<td>");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${productOrdered.product.description}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
         out.write("</td>");
         out.write("</tr>");
         out.write("</table>");

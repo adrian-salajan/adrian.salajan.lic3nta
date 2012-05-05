@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+xmlns:spring="http://www.springframework.org/tags"
+ xmlns:c="http://java.sun.com/jsp/jstl/core" 
+ xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+ xmlns:security = "http://www.springframework.org/security/tags"
+ xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+ xmlns:form="http://www.springframework.org/tags/form"
+  version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <jsp:output omit-xml-declaration="yes"/>
+  <spring:message code="label_stock_index" htmlEscape="false" var="title"/>
+   <security:authorize access="hasRole('ROLE_ADMIN')">
+   	<form:form action="user" modelAttribute="userform">
+   	User: ${userform.username}
+   	<br/>
+   		Roles:
+   		<ul>
+   		<form:radiobuttons path="selectedRole" items="${userform.roles}" element="li" />
+   		</ul>
+   		
+   		Regions:
+   		<ul>
+   		<form:checkboxes  path="selectedRegions" items="${userform.regions}" element="li" />
+   		</ul>
+
+	<form:button value="Update" name="Update" class="button">Update</form:button>   	
+   	</form:form>
+   	
+   </security:authorize>
+  	
+</div>
+

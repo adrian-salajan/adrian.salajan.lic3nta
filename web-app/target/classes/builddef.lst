@@ -15,13 +15,16 @@ C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\integration\OfertaInt
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\mvc\CategoryController.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\mvc\model\ProductOrdered.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\mvc\ProductController.java
+C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\mvc\AdminController.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\mvc\OrderController.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\mvc\model\CategoryAdd.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\mvc\model\CategoryView.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\reports\ReportService.java
+C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\mvc\model\UserForm.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\security\SecurityUtils.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\reports\ProductReport.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\integration\ProductIntegration.java
+C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\entity\Region.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\integration\IntegrationConstants.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\entity\Userrr.java
 C:\Users\blitzkr1eg\git\git-repo\web-app\src\main\java\web\integration\impl\ProductIntegrationServiceImpl.java

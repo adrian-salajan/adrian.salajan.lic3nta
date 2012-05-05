@@ -5,23 +5,31 @@
   xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-        <menu:category id="c_controller" z="nj8Dm3hojIyIEyPkwE1UMDIs+K8=">
-            <menu:item id="i_controller__stockindex_id" messageCode="global_generic" url="/stock/index" z="ubMeb+Kzri10PVqAD8I2YCbZQS4="/>
-        </menu:category>
-    </menu:menu>
     
+    	<c:url value="/add"  context="/web-app/category" var="addcat"></c:url>
+    	<c:url value="/add"  context="/web-app/product" var="addprod"></c:url>
+    	<c:url value="/add"  context="/web-app/product" var="addprod"></c:url>
+    	<c:url value="/ordersn"  context="/web-app/product" var="ordersn"></c:url>
+    	<c:url value="/ordersp"  context="/web-app/product" var="ordersp"></c:url>
+    	<c:url value="/orderspe"  context="/web-app/product" var="orderspe"></c:url>
+    	
+    	<c:url value="/ordersNegotiating"  context="/web-app/sales" var="ordersneg"></c:url>
+    	<c:url value="/ordersReady"  context="/web-app/sales" var="ordersready"></c:url>
+
+    	<div class="menu-title home" ><a href="/web-app/index">Home</a></div>
     	<security:authorize access="hasRole('ROLE_STOCK')" var="isStock">
-	    	<c:url value="/add"  context="/web-app/category" var="addcat"></c:url>
-	    	<c:url value="/add"  context="/web-app/product" var="addprod"></c:url>
-	    	<c:url value="/add"  context="/web-app/product" var="addprod"></c:url>
-	    	<c:url value="/ordersn"  context="/web-app/product" var="ordersn"></c:url>
-	    	<c:url value="/ordersp"  context="/web-app/product" var="ordersp"></c:url>
-	    	<ul>
+	    
+	    	<div class="menu-title">Stock Management</div>
+	    	<ul class="menu">
 	    		<li><a href="${addcat}">Add Category</a></li>
 	    		<li><a href="${addprod}">Add Product</a></li>
-	    		<li><a href="${ordersn}">View new orders</a></li>
-	    		<li><a href="${ordersp}">View processing orders</a></li>
+	    	
+	    	</ul>
+	    	<div class="menu-title">View Orders</div>
+	    	<ul class="menu">
+	    		<li><a href="${ordersn}">New orders</a></li>
+	    		<li><a href="${ordersp}">Processing orders</a></li>
+	    		<li><a href="${orderspe}">Completed orders</a></li>
 	    	</ul>
     	</security:authorize>
     	
@@ -29,5 +37,16 @@
     		<ul>
     			<li><a href="/web-app/orders">View orders</a></li>
     		</ul>
+    	</security:authorize>
+    	
+    	<security:authorize access="hasRole('ROLE_SALES')" var="isSales">
+    		<div class="menu-title">View Orders</div>
+	    	<ul class="menu">
+	    		<li><a href="/web-app/sales">All</a></li>
+	    		<li><a href="${ordersneg}">Negotiating</a></li>
+	    		<li><a href="${ordersready}">Ready</a></li>
+	    		<li><a href="${ordersn}">Ordered</a></li>
+	    	</ul>
+    			
     	</security:authorize>
 </div>

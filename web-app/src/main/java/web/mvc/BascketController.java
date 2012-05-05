@@ -29,6 +29,7 @@ import web.mvc.model.Bascket;
 import web.mvc.model.BascketView;
 import web.mvc.model.ProductOrdered;
 import web.mvc.model.ShipmentPreferencesForm;
+import web.security.SecurityUtils;
 
 @RequestMapping("/bascket")
 @Controller
@@ -36,6 +37,9 @@ public class BascketController {
 	
 	@Autowired
 	Bascket bascket;
+	
+	@Autowired
+	SecurityUtils secUtils;
 	
 	
 	@Autowired
@@ -98,9 +102,8 @@ public class BascketController {
 		if (total > 500) {
 			form.setAllowNegociation(true);
 		}
-		form.getRegions().add("Cluj");
-		form.getRegions().add("Timisoara");
-		form.getRegions().add("Bucuresti");
+		form.getRegions().addAll(secUtils.getRegions());
+		
 		
 		model.put("shipmentPreferencesForm", form);
 	}

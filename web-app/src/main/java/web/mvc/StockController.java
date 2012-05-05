@@ -144,6 +144,9 @@ public class StockController {
 		if (roles.contains("ROLE_STOCK"))
 			return "redirect:/index";
 		
+		if (roles.contains("ROLE_ADMIN"))
+			return "redirect:/admin";
+		
 		if (auth.getAuthorities().contains("ROLE_CLIENT"))
 				return "redirect:/index";
 		

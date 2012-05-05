@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 public class CategoryAdd {
 	
-	@Size(min= 3 , max = 25, message="gfhghj")
+	@Size(min= 3 , max = 25)
 	private String name;
 	
 	

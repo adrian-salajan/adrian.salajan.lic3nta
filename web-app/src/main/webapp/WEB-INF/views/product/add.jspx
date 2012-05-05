@@ -36,11 +36,11 @@ xmlns:spring="http://www.springframework.org/tags"
 			  		<form:errors path="stock"/></td>
 			  	</tr>
 			  	<tr>
-			  		<td>Description:</td> <td>  <form:input path="description" />
+			  		<td>Description:</td> <td>  <form:textarea path="description" rows="5" />
 			  		<form:errors path="description"/></td>
 			  	</tr>
 			  	</table>
-			  	<form:button>Add</form:button>
+			  	<form:button class="button">Add</form:button>
 		</form:form>
   	</security:authorize>
 

@@ -87,13 +87,13 @@ public class OrderController {
 	public String doneOrder(@PathVariable("id") Long id, 
 			@RequestParam("address") String address) {
 		ofertaService.comanda(id, address);
-		return "redirect:/web-app/orders";
+		return "redirect:/orders";
 	}
 	
 	@RequestMapping(value = "/{id}/cancel")
 	public String cancelOrder(@PathVariable("id") Long id){
 		ofertaService.cancel(id);
-		return "redirect:/web-app/orders";
+		return "redirect:/orders";
 	}
 
 }

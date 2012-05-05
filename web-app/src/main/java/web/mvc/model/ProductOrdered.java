@@ -9,7 +9,7 @@ public class ProductOrdered {
 	
 	int qty;
 	
-	@AssertTrue(message="The ordered quantity exeeds the available stock.")
+	@AssertTrue(message="Unavailable.")
 	public boolean isQuantityValid() {
 		return (qty >= 0) && (qty <= product.getStock());
 	}

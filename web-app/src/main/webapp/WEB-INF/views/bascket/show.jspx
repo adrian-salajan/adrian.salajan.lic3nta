@@ -19,6 +19,7 @@ xmlns:spring="http://www.springframework.org/tags"
   		<TH>Name</TH>
   		<TH>Price</TH>
   		<TH>Qty</TH>
+  		<TH>Ordered Qty</TH>
   	</TR>
   </THEAD>
   
@@ -42,7 +43,7 @@ xmlns:spring="http://www.springframework.org/tags"
 
 						<security:authorize access="hasRole('ROLE_CLIENT')">
 			  				<td>	
-			  					<form:input path="products[${pstatus.index}].qty" />
+			  					<form:input path="products[${pstatus.index}].qty" size="4" /> <br/>
 			  					<form:errors path="products[${pstatus.index}].quantityValid"></form:errors>
 			  				</td>
 			  			</security:authorize>
@@ -52,8 +53,10 @@ xmlns:spring="http://www.springframework.org/tags"
   </table>
   <security:authorize access="hasRole('ROLE_CLIENT')">
   		Total: ${view.totalSum}
-  		<form:button value="update" name="update" >Update</form:button>
-  		<a href="#" onclick="submitBascket();">Continue to Step 2</a>
+  		<c:if test="${view.totalSum > 0}">
+	  		<form:button value="update" name="update" >Update</form:button>
+	  		<a href="#" onclick="submitBascket();">Continue to Step 2</a>
+  		</c:if>
   </security:authorize>
   </form:form>
 </div>

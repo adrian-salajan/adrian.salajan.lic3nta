@@ -1,8 +1,14 @@
 package web.integration;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import web.entity.Userrr;
 
 
 @Entity
@@ -13,7 +19,7 @@ public class OfertaIntegration {
 
 	@Column
 	private String status;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -29,8 +35,6 @@ public class OfertaIntegration {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
-	
+
 
 }

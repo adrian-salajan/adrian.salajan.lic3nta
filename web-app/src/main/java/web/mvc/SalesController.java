@@ -5,6 +5,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ import domain.Product;
 import adrian.comenziadapter.OrderGateway;
 
 import web.converter.Converter;
+import web.entity.Region;
 import web.entity.Userrr;
 import web.integration.IntegrationConstants;
 import web.integration.OfertaIntegrationService;
@@ -70,8 +72,8 @@ public class SalesController {
 		
 		Userrr user = userDao.getUser(principal.getName());
 		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
-		for (String r : user.getRegions()) {
-			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r)));
+		for (Region r : user.getRegions()) {
+			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r.getName())));
 		}
 		for(HistoryOrder ho : oferteRegionale) {
 			ho.setUpdateStatus(integrationService.getStatus(ho.getOrder().getId()));
@@ -81,6 +83,43 @@ public class SalesController {
 		return "sales/orders";
 		
 	}
+	
+
+	@RequestMapping(value= "/ordersNegotiating", method = RequestMethod.GET)
+	public String getSalesNegotiating(Principal principal, ModelMap model) {
+		
+		Userrr user = userDao.getUser(principal.getName());
+		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
+		for (Region r : user.getRegions()) {
+			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r.getName())));
+		}
+		for(HistoryOrder ho : oferteRegionale) {
+			ho.setUpdateStatus(integrationService.getStatus(ho.getOrder().getId()));
+		}
+		
+		List<HistoryOrder> filterNegotiating = this.filterNegotiating(oferteRegionale);
+		model.put("orders", filterNegotiating);
+		
+		return "sales/orders";
+		
+	}
+	
+	@RequestMapping(value= "/ordersReady", method = RequestMethod.GET)
+	public String getSalesReady(Principal principal, ModelMap model) {
+		
+		Userrr user = userDao.getUser(principal.getName());
+		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
+		for (Region r : user.getRegions()) {
+			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r.getName())));
+		}
+		
+		List<HistoryOrder> filterReady = this.filterReady(oferteRegionale);
+		model.put("orders", filterReady);
+		
+		return "sales/orders";
+		
+	}
+	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String showSale(@PathVariable("id") Long id, ModelMap model,
@@ -112,7 +151,7 @@ public class SalesController {
 	public String finishOrder(@PathVariable("id") Long id, ModelMap model) {
 		ofertaService.oferteaza(id);
 		model.put("orderId", id);
-		return "sales/orders";
+		return "redirect:/sales";
 	}
 	
 	@RequestMapping(value = "/{id}/process", method = RequestMethod.GET)
@@ -141,6 +180,12 @@ public class SalesController {
 		Map model = reportsService.getOfertaParameters(processed);
 		return new ModelAndView("pdfComanda", model); 
 	}
+	
+	@RequestMapping(value = "/{id}/processed", method = RequestMethod.GET)
+	public String processedOrder(@PathVariable("id") Long id) {
+		ofertaService.finalizeazaComanda(id);
+		return "redirect:/product/orderspe";
+	}
 
 	private void updateProductStock(ProductDTO product, Product p) throws StockGatewayException {
 		if (product.stock >= p.getQuantity()) {
@@ -150,6 +195,39 @@ public class SalesController {
 		}
 		stock.updateProduct(product);
 		
+	}
+	
+	private List<HistoryOrder> filterNegotiating(
+			Collection<HistoryOrder> oferteRegionale) {
+		List<HistoryOrder> list = new ArrayList<HistoryOrder>(oferteRegionale.size());
+		for (HistoryOrder o : oferteRegionale) {
+			if (o.getStatus().equals("inprogress")) {
+				list.add(o);
+			}
+		}
+		return list;
+	}
+	
+	private List<HistoryOrder> filterReady(
+			Collection<HistoryOrder> oferteRegionale) {
+		List<HistoryOrder> list = new ArrayList<HistoryOrder>(oferteRegionale.size());
+		for (HistoryOrder o : oferteRegionale) {
+			if (o.getStatus().equals("ready")) {
+				list.add(o);
+			}
+		}
+		return list;
+	}
+	
+	private List<HistoryOrder> filterOrdered(
+			Collection<HistoryOrder> oferteRegionale) {
+		List<HistoryOrder> list = new ArrayList<HistoryOrder>(oferteRegionale.size());
+		for (HistoryOrder o : oferteRegionale) {
+			if (o.getStatus().equals("unprocessed")) {
+				list.add(o);
+			}
+		}
+		return list;
 	}
 
 

@@ -17,13 +17,10 @@ xmlns:spring="http://www.springframework.org/tags"
 	  	<form:form modelAttribute="categoryAdd" commandName="categoryAdd"  method="POST" action="add"  >
 	  			<table>
 			  	<tr>
-			  		<td>Name  :</td> <td> <form:input path="name" /></td>
-			  	</tr>
-			  	<tr>
-			  		<td></td> <td><form:errors path="*" element="div" cssClass="error"/><form:errors path="name" element="div" cssClass="error"/></td>
+			  		<td>Category name :</td> <td> <form:input path="name" /><form:errors path="name" element="div" cssClass="error"/></td>
 			  	</tr>
 			  	</table>
-			  	<form:button>Add</form:button>
+			  	<form:button class="button">Add</form:button>
 		</form:form>
   	</security:authorize>
 

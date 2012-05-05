@@ -30,6 +30,7 @@ import ro.ubb.StockAdapter.gateway.StockGateway;
 import ro.ubb.StockAdapter.gateway.exceptions.StockGatewayException;
 
 import web.converter.Converter;
+import web.entity.Region;
 import web.entity.Userrr;
 import web.mvc.model.AddProduct;
 import web.mvc.model.Bascket;
@@ -148,8 +149,8 @@ public class ProductController {
 		Userrr user = userDao.getUser(principal.getName());
 		
 		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
-		for (String r : user.getRegions()) {
-			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r)));
+		for (Region r : user.getRegions()) {
+			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r.getName())));
 		}
 		
 		List<HistoryOrder> oferteStock = filterUnprocessed(oferteRegionale);
@@ -163,11 +164,26 @@ public class ProductController {
 		Userrr user = userDao.getUser(principal.getName());
 		
 		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
-		for (String r : user.getRegions()) {
-			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r)));
+		for (Region r : user.getRegions()) {
+			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r.getName())));
 		}
 		
 		List<HistoryOrder> oferteStock = filterProcessing(oferteRegionale);
+		
+		model.put("orders", oferteStock);
+		return "sales/orders";
+	}
+	
+	@RequestMapping(value="/orderspe", method = RequestMethod.GET)
+	public String viewOrdersEndedProcessing(Principal principal, ModelMap model) {
+		Userrr user = userDao.getUser(principal.getName());
+		
+		Collection<HistoryOrder> oferteRegionale = new ArrayList<HistoryOrder>();
+		for (Region r : user.getRegions()) {
+			oferteRegionale.addAll(Converter.toHistoryOrders(ofertaService.getByRegion(r.getName())));
+		}
+		
+		List<HistoryOrder> oferteStock = filterDone(oferteRegionale);
 		
 		model.put("orders", oferteStock);
 		return "sales/orders";

@@ -3,6 +3,7 @@ package web.mvc.model;
 import java.util.Collection;
 
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -26,6 +27,7 @@ public class AddProduct {
 	public long price;
 	
 	@NotNull
+	@Min(0)
 	public int stock;
 	
 	public String description;

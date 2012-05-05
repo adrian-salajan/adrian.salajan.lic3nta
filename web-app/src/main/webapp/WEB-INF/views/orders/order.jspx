@@ -42,14 +42,23 @@ xmlns:spring="http://www.springframework.org/tags"
   				</tr>
   			</c:forEach>
   		</table>
-  		<c:if test="${order.status == 'ready' }">
+  		<c:if test="${order.status == 'ready' }"> <br/>
 	  		<form action="/web-app/orders/${order.order.id}/done" method="POST">
-	  			Shipment address <input name="address" />
-	  			<INPUT type="submit" />
+	  			Shipment address <input name="address" size="40" /> <br/>
+	  			<INPUT type="submit" class="button" style="background-image: url('/web-app/resources/images/order.png');" value="Order" />
+	  			<a href="/web-app/orders/${order.order.id}/cancel" class="btlink" style="float:right;">
+				<span><img src="/web-app/resources/images/cancel.png" alt="Cancel order" />Cancel order</span>
+				</a>
 	  		</form>
-	  		
-  		</c:if>
+	  	</c:if>
+  		<c:if test="${(order.status eq 'inprogress') or 
+		  	(order.status eq 'unprocessed')}">
+			<a href="/web-app/orders/${order.order.id}/cancel" class="btlink" style="float:right;">
+				<span><img src="/web-app/resources/images/cancel.png" alt="Cancel order" />Cancel order</span>
+			</a>
+			</c:if>
   		
+  		<br style="clear:both" />
   	</c:if>
   	<!-- negociabila -->
   		<c:if test="${order.status eq 'inprogress' }">
@@ -73,16 +82,27 @@ xmlns:spring="http://www.springframework.org/tags"
 	  				</tr>
 	  			</c:forEach>
 	  		</table>
-	  		<input type="submit" />
-	  		<a href="/web-app/orders/${order.order.id}/finish">Order</a>
+	  		<input type="submit" class="button" value="Update" style="clear:both" />
+	  		
+	  		<div>
+	  		
+	  		<a href="/web-app/orders/${order.order.id}/finish" class="btlink" style="float:right">
+	  			<span><img src="/web-app/resources/images/order.png" alt="Cancel order" />Order</span>
+	  		</a>
+	  		
+	  		<c:if test="${(order.status eq 'inprogress') or 
+			  	(order.status eq 'ready') or 
+			  	(order.status eq 'unprocessed')}">
+				<a href="/web-app/orders/${order.order.id}/cancel" class="btlink" style="float:left;">
+					<span><img src="/web-app/resources/images/cancel.png" alt="Cancel order" />Cancel order</span>
+				</a>
+			</c:if>
+			</div>
   		</form:form>
+  		<br style="clear:both" />
   		
   	</c:if>
-  	<c:if test="${(order.status eq 'inprogress') or 
-		  	(order.status eq 'ready') or 
-		  	(order.status eq 'unprocessed')}">
-		<a href="/web-app/orders/${order.order.id}/cancel">Cancel order</a>
-	</c:if>
+  	
   
 	  	
    </security:authorize>

@@ -37,7 +37,7 @@ body {
 }
 
 #menu {
-	background: #eee;
+	background: #fff;
 	position:relative;
 	float:left;  	
 	left:0px;
@@ -47,8 +47,8 @@ body {
 
 #menu ul{
 	list-style: none;
-	margin: 0;
 	padding: 0;
+	margin:  0 0 10px 0;
 }
 
 #menu ul li{
@@ -56,11 +56,14 @@ body {
 }
 
 
-#menu a, #menu h2 {
+#menu ul li a, #menu h2 {
 	display: block;
 	margin: 0;
 	padding: 2px 6px;
-	color:#FFFFFF;
+	
+	color:#877963;
+	background-color: #DEDCC3;
+	text-decoration: none;
 }
 
 #menu h2 {
@@ -71,16 +74,10 @@ body {
 	font-size: 12px;
 }
 
-#menu a {
-	color: #666666;
-	background: #efefef;
-	text-decoration: none;
-	padding: 2px 12px;
-}
 
-#menu a:hover {
-	color: #648C1D;
-	background: #fff;
+
+#menu ul li a:hover {
+	background-color: #F2F1E9;
 }
 
 #footer {
@@ -122,6 +119,64 @@ input {
 input, textarea, select {
 	border:1px solid #B3B3B3;
 }
+
+.button {
+	background-color: #6E9489;
+	background-image: url('/web-app/resources/images/updateorder.png');
+	background-position: 4px 4px;
+	background-repeat:no-repeat;
+	text-indent: 14px;
+	border:none;
+	color:#F2F1E9;
+	margin-top:10px;
+	margin-left: 0px;
+	height:24px;
+	width: 100px;
+	text-align: left;
+}
+.btlink {
+	margin-top:10px;
+	background-color: #6E9489;
+	height:20px;
+	display:inline-block;
+	text-decoration: none;
+	position:relative;
+	padding-top:4px;
+	width: 100px;
+	
+	
+}
+.btlink span {
+	color:#F2F1E9;
+	position:relative;
+	text-align: center;
+	padding-left:4px;
+	padding-right:4px;
+	text-align: left;
+}
+.btlink img {
+	padding-right: 2px;
+}
+
+.btlink:hover {
+	background-color: #877963;
+}
+
+.button span {
+	position: relative;
+	top: -2px;
+}
+
+.button img {
+	position: relative;
+	top: 2px;
+}
+
+.button:hover {
+	background-color: #877963;
+}
+
+
 
 input.image {
 	border: none;
@@ -196,7 +251,7 @@ tr:nth-child(odd) {
 }
 
 tr:nth-child(even) {
-	background-color: #EFEFEF;
+	background-color: #F2F1E9;
 }
 
 a:link {
@@ -204,7 +259,7 @@ a:link {
 }
 
 a:hover {
-	color: #456314;
+	color: #7db223;
 }
 
 a:active {
@@ -221,7 +276,7 @@ li {
 }
 
 ul li {
-	margin:0 0 0.25em 0;
+	margin:0 0 1px 0;
 	padding:0;
 }
 /* table elements */
@@ -256,7 +311,7 @@ table th {
 	text-align: left;
 	font-weight: bold;
 	color: #FFF;
-	background: #999;
+	background: #6E9489;
 }
 
 table thead {
@@ -264,8 +319,33 @@ table thead {
 	font-style: italic;
 	background-color: #BBBBBB;
 }
+table img {
+	height: 30px;
+}
 
-table a:link {color: #303030;}
+table#sorted-table .header { 
+    cursor: pointer; 
+    text-indent: 15px;
+    background-image: url("/web-app/resources/images/unordered.png");
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+table#sorted-table .headerSortUp {
+	background-image: url("/web-app/resources/images/arrow-down.png");
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	
+}
+table#sorted-table .headerSortDown { 
+	background-image: url("/web-app/resources/images/arrow-up.png");
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+table a:link {
+	color: #7db223;
+	text-decoration: none;
+	}
 
 .utilbox {width: 18px;}
 
@@ -370,4 +450,10 @@ fieldset th {
 .flag {
 	height: 11px;
 	width: 16px;
+}
+.home {
+	margin: 0 0 4px 0;
+}
+#selectedForm {
+	width: 140px;
 }

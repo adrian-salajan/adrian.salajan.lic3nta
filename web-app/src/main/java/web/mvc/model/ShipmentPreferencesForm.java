@@ -2,15 +2,19 @@ package web.mvc.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.hibernate.validator.constraints.NotEmpty;
+
+import web.entity.Region;
 
 public class ShipmentPreferencesForm {
 	
 	private boolean allowNegociation;
 	private boolean isNegociated;
 	
-	private List<String> regions;
+	private Set<Region> regions;
 	@NotEmpty
 	private String clientInfo;
 	@NotEmpty
@@ -48,13 +52,13 @@ public class ShipmentPreferencesForm {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public List<String> getRegions() {
+	public Set<Region> getRegions() {
 		if (regions == null) {
-			regions = new ArrayList<String>();
+			regions = new TreeSet<Region>();
 		}
 		return regions;
 	}
-	public void setRegions(List<String> regions) {
+	public void setRegions(Set<Region> regions) {
 		this.regions = regions;
 	}
 	
