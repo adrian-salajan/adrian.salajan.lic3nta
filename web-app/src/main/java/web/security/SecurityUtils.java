@@ -26,9 +26,12 @@ public class SecurityUtils {
 	@PersistenceContext
 	private EntityManager em;
 	
+	private static final String REGION_SALES = "select * from region where region.id not in " +
+			" (select region_id from userrr_region inner join userrr on userrr_region.userrr_id = userrr.id " +
+			"where userrr.rolee = 'SALES') "; 
+	
 	@Transactional
 	public Userrr getUser(String username) {
-		//return (Userrr) sessionFactory.getCurrentSession().createCriteria(Userrr.class).add(Restrictions.eq("username", username)).uniqueResult();
 		CriteriaBuilder b = em.getCriteriaBuilder();
 		CriteriaQuery<Userrr> criteria = em.getCriteriaBuilder().createQuery(Userrr.class);
 		Root<Userrr> root = criteria.from(Userrr.class);
@@ -57,6 +60,28 @@ public class SecurityUtils {
 		criteria.select(root);
 		TypedQuery<Region> query = em.createQuery(criteria);
 		return new TreeSet<Region>(query.getResultList());
+	}
+	
+	@Transactional
+	public Set<Region> getRegionsForSales() {
+		List<Region> list = em.createNativeQuery(REGION_SALES, Region.class).getResultList();
+		return new TreeSet<Region>(list);
+	}
+
+	@Transactional
+	public void update(Userrr user) {
+		em.merge(user);
+	}
+
+	@Transactional
+	public Region getRegion(String region) {
+		CriteriaBuilder b = em.getCriteriaBuilder();
+		CriteriaQuery<Region> criteria = em.getCriteriaBuilder().createQuery(Region.class);
+		Root<Region> root = criteria.from(Region.class);
+		criteria.select(root);
+		criteria.where(b.equal(root.get("name"), region));
+		TypedQuery<Region> query = em.createQuery(criteria);
+		return query.getSingleResult();
 	}
 
 }

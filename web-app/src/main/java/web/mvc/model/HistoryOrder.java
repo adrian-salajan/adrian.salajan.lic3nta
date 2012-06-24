@@ -9,6 +9,8 @@ public class HistoryOrder {
 	private Oferta order;
 	
 	private String updateStatus;
+	
+	private boolean locked;
 
 	public Oferta getOrder() {
 		return order;
@@ -47,6 +49,16 @@ public class HistoryOrder {
 	public void setUpdateStatus(String updateStatus) {
 		this.updateStatus = updateStatus;
 	}
+
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
+	
+	
 	
 	
 	

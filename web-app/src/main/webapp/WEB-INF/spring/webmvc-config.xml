@@ -55,6 +55,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     <mvc:interceptors>
         <bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor"/>
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="lang"/>
+        <bean id="UnlockInterceptor" class="web.interceptors.UnlockOfferInterceptor" />
     </mvc:interceptors>
 
     <!-- Selects a static view for rendering without the need for an explicit controller -->
@@ -115,5 +116,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
   
   <bean class="org.springframework.web.servlet.view.XmlViewResolver"
 	p:location="/WEB-INF/spring/jasper-views.xml"  p:order="0" />
+	
+	
   
 </beans>

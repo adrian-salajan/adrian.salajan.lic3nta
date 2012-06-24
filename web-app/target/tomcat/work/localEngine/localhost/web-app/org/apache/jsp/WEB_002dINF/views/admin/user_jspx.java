@@ -13,9 +13,11 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
 
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fvar_005fhtmlEscape_005fcode_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005faccess;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005faction;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fitems_005felement_005fnobody;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005faction;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fonchange_005fitems_005felement_005fcssClass_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fcssClass_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fdisabled_005fcssClass_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fname_005fclass;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
@@ -28,9 +30,11 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
   public void _jspInit() {
     _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fvar_005fhtmlEscape_005fcode_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005faccess = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005faction = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fitems_005felement_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005faction = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fonchange_005fitems_005felement_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fdisabled_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fname_005fclass = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
@@ -39,9 +43,11 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
   public void _jspDestroy() {
     _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fvar_005fhtmlEscape_005fcode_005fnobody.release();
     _005fjspx_005ftagPool_005fsecurity_005fauthorize_0026_005faccess.release();
-    _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005faction.release();
-    _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fitems_005felement_005fnobody.release();
-    _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fnobody.release();
+    _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005faction.release();
+    _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody.release();
+    _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fonchange_005fitems_005felement_005fcssClass_005fnobody.release();
+    _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fcssClass_005fnobody.release();
+    _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fdisabled_005fcssClass_005fnobody.release();
     _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fname_005fclass.release();
   }
 
@@ -146,13 +152,15 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:form
-    org.springframework.web.servlet.tags.form.FormTag _jspx_th_form_005fform_005f0 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
+    org.springframework.web.servlet.tags.form.FormTag _jspx_th_form_005fform_005f0 = (org.springframework.web.servlet.tags.form.FormTag) _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005faction.get(org.springframework.web.servlet.tags.form.FormTag.class);
     _jspx_th_form_005fform_005f0.setPageContext(_jspx_page_context);
     _jspx_th_form_005fform_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_security_005fauthorize_005f0);
-    // /WEB-INF/views/admin/user.jspx(14,56) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(14,92) name = modelAttribute type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fform_005f0.setModelAttribute("userform");
-    // /WEB-INF/views/admin/user.jspx(14,56) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_form_005fform_005f0.setAction("user");
+    // /WEB-INF/views/admin/user.jspx(14,92) name = method type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fform_005f0.setMethod("POST");
+    // /WEB-INF/views/admin/user.jspx(14,92) name = action type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fform_005f0.setAction("/web-app/admin/user/update");
     int[] _jspx_push_body_count_form_005fform_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_form_005fform_005f0 = _jspx_th_form_005fform_005f0.doStartTag();
@@ -163,6 +171,8 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userform.username}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("\n");
           out.write("   \t");
+          if (_jspx_meth_form_005fhidden_005f0(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
+            return true;
           out.write("<br/>");
           out.write("\n");
           out.write("   \t\tRoles:\n");
@@ -171,14 +181,17 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
           if (_jspx_meth_form_005fradiobuttons_005f0(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
             return true;
           out.write("</ul>");
+          out.write("<div id=\"user-regions\">");
           out.write("\n");
-          out.write("   \t\t\n");
-          out.write("   \t\tRegions:\n");
-          out.write("   \t\t");
+          out.write("\t   \t\tRegions:\n");
+          out.write("\t   \t\t");
           out.write("<ul>");
           if (_jspx_meth_form_005fcheckboxes_005f0(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
             return true;
+          if (_jspx_meth_form_005fcheckboxes_005f1(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
+            return true;
           out.write("</ul>");
+          out.write("</div>");
           if (_jspx_meth_form_005fbutton_005f0(_jspx_th_form_005fform_005f0, _jspx_page_context, _jspx_push_body_count_form_005fform_005f0))
             return true;
           int evalDoAfterBody = _jspx_th_form_005fform_005f0.doAfterBody();
@@ -195,7 +208,34 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_005fform_005f0.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_005fform_005f0.doFinally();
-      _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005faction.reuse(_jspx_th_form_005fform_005f0);
+      _005fjspx_005ftagPool_005fform_005fform_0026_005fmodelAttribute_005fmethod_005faction.reuse(_jspx_th_form_005fform_005f0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_form_005fhidden_005f0(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  form:hidden
+    org.springframework.web.servlet.tags.form.HiddenInputTag _jspx_th_form_005fhidden_005f0 = (org.springframework.web.servlet.tags.form.HiddenInputTag) _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody.get(org.springframework.web.servlet.tags.form.HiddenInputTag.class);
+    _jspx_th_form_005fhidden_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_form_005fhidden_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
+    // /WEB-INF/views/admin/user.jspx(16,36) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fhidden_005f0.setPath("username");
+    int[] _jspx_push_body_count_form_005fhidden_005f0 = new int[] { 0 };
+    try {
+      int _jspx_eval_form_005fhidden_005f0 = _jspx_th_form_005fhidden_005f0.doStartTag();
+      if (_jspx_th_form_005fhidden_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_form_005fhidden_005f0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_form_005fhidden_005f0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_form_005fhidden_005f0.doFinally();
+      _005fjspx_005ftagPool_005fform_005fhidden_0026_005fpath_005fnobody.reuse(_jspx_th_form_005fhidden_005f0);
     }
     return false;
   }
@@ -205,14 +245,18 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:radiobuttons
-    org.springframework.web.servlet.tags.form.RadioButtonsTag _jspx_th_form_005fradiobuttons_005f0 = (org.springframework.web.servlet.tags.form.RadioButtonsTag) _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fitems_005felement_005fnobody.get(org.springframework.web.servlet.tags.form.RadioButtonsTag.class);
+    org.springframework.web.servlet.tags.form.RadioButtonsTag _jspx_th_form_005fradiobuttons_005f0 = (org.springframework.web.servlet.tags.form.RadioButtonsTag) _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fonchange_005fitems_005felement_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.RadioButtonsTag.class);
     _jspx_th_form_005fradiobuttons_005f0.setPageContext(_jspx_page_context);
     _jspx_th_form_005fradiobuttons_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/views/admin/user.jspx(19,86) name = element type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(20,136) name = onchange type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fradiobuttons_005f0.setOnchange("updateRegionsBySale()");
+    // /WEB-INF/views/admin/user.jspx(20,136) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fradiobuttons_005f0.setCssClass("role");
+    // /WEB-INF/views/admin/user.jspx(20,136) name = element type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fradiobuttons_005f0.setElement("li");
-    // /WEB-INF/views/admin/user.jspx(19,86) name = items type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(20,136) name = items type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fradiobuttons_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userform.roles}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/admin/user.jspx(19,86) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(20,136) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fradiobuttons_005f0.setPath("selectedRole");
     int[] _jspx_push_body_count_form_005fradiobuttons_005f0 = new int[] { 0 };
     try {
@@ -226,7 +270,7 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_005fradiobuttons_005f0.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_005fradiobuttons_005f0.doFinally();
-      _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fitems_005felement_005fnobody.reuse(_jspx_th_form_005fradiobuttons_005f0);
+      _005fjspx_005ftagPool_005fform_005fradiobuttons_0026_005fpath_005fonchange_005fitems_005felement_005fcssClass_005fnobody.reuse(_jspx_th_form_005fradiobuttons_005f0);
     }
     return false;
   }
@@ -236,14 +280,16 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  form:checkboxes
-    org.springframework.web.servlet.tags.form.CheckboxesTag _jspx_th_form_005fcheckboxes_005f0 = (org.springframework.web.servlet.tags.form.CheckboxesTag) _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fnobody.get(org.springframework.web.servlet.tags.form.CheckboxesTag.class);
+    org.springframework.web.servlet.tags.form.CheckboxesTag _jspx_th_form_005fcheckboxes_005f0 = (org.springframework.web.servlet.tags.form.CheckboxesTag) _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.CheckboxesTag.class);
     _jspx_th_form_005fcheckboxes_005f0.setPageContext(_jspx_page_context);
     _jspx_th_form_005fcheckboxes_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/views/admin/user.jspx(24,90) name = element type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(25,111) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fcheckboxes_005f0.setCssClass("region");
+    // /WEB-INF/views/admin/user.jspx(25,111) name = element type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fcheckboxes_005f0.setElement("li");
-    // /WEB-INF/views/admin/user.jspx(24,90) name = items type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(25,111) name = items type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fcheckboxes_005f0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userform.regions}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
-    // /WEB-INF/views/admin/user.jspx(24,90) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(25,111) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fcheckboxes_005f0.setPath("selectedRegions");
     int[] _jspx_push_body_count_form_005fcheckboxes_005f0 = new int[] { 0 };
     try {
@@ -257,7 +303,42 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
       _jspx_th_form_005fcheckboxes_005f0.doCatch(_jspx_exception);
     } finally {
       _jspx_th_form_005fcheckboxes_005f0.doFinally();
-      _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fnobody.reuse(_jspx_th_form_005fcheckboxes_005f0);
+      _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fcssClass_005fnobody.reuse(_jspx_th_form_005fcheckboxes_005f0);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_form_005fcheckboxes_005f1(javax.servlet.jsp.tagext.JspTag _jspx_th_form_005fform_005f0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_005fform_005f0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  form:checkboxes
+    org.springframework.web.servlet.tags.form.CheckboxesTag _jspx_th_form_005fcheckboxes_005f1 = (org.springframework.web.servlet.tags.form.CheckboxesTag) _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fdisabled_005fcssClass_005fnobody.get(org.springframework.web.servlet.tags.form.CheckboxesTag.class);
+    _jspx_th_form_005fcheckboxes_005f1.setPageContext(_jspx_page_context);
+    _jspx_th_form_005fcheckboxes_005f1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
+    // /WEB-INF/views/admin/user.jspx(26,135) name = cssClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fcheckboxes_005f1.setCssClass("region");
+    // /WEB-INF/views/admin/user.jspx(26,135) name = disabled type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fcheckboxes_005f1.setDisabled("true");
+    // /WEB-INF/views/admin/user.jspx(26,135) name = element type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fcheckboxes_005f1.setElement("li");
+    // /WEB-INF/views/admin/user.jspx(26,135) name = items type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fcheckboxes_005f1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${userform.unavailableRegions}", java.lang.Object.class, (PageContext)_jspx_page_context, null, false));
+    // /WEB-INF/views/admin/user.jspx(26,135) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_form_005fcheckboxes_005f1.setPath("dummyRegions");
+    int[] _jspx_push_body_count_form_005fcheckboxes_005f1 = new int[] { 0 };
+    try {
+      int _jspx_eval_form_005fcheckboxes_005f1 = _jspx_th_form_005fcheckboxes_005f1.doStartTag();
+      if (_jspx_th_form_005fcheckboxes_005f1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_form_005fcheckboxes_005f1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_form_005fcheckboxes_005f1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_form_005fcheckboxes_005f1.doFinally();
+      _005fjspx_005ftagPool_005fform_005fcheckboxes_0026_005fpath_005fitems_005felement_005fdisabled_005fcssClass_005fnobody.reuse(_jspx_th_form_005fcheckboxes_005f1);
     }
     return false;
   }
@@ -270,11 +351,11 @@ public final class user_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.form.ButtonTag _jspx_th_form_005fbutton_005f0 = (org.springframework.web.servlet.tags.form.ButtonTag) _005fjspx_005ftagPool_005fform_005fbutton_0026_005fvalue_005fname_005fclass.get(org.springframework.web.servlet.tags.form.ButtonTag.class);
     _jspx_th_form_005fbutton_005f0.setPageContext(_jspx_page_context);
     _jspx_th_form_005fbutton_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_005fform_005f0);
-    // /WEB-INF/views/admin/user.jspx(27,59) null
+    // /WEB-INF/views/admin/user.jspx(30,59) null
     _jspx_th_form_005fbutton_005f0.setDynamicAttribute(null, "class", new String("button"));
-    // /WEB-INF/views/admin/user.jspx(27,59) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(30,59) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fbutton_005f0.setName("Update");
-    // /WEB-INF/views/admin/user.jspx(27,59) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/admin/user.jspx(30,59) name = value type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_form_005fbutton_005f0.setValue("Update");
     int[] _jspx_push_body_count_form_005fbutton_005f0 = new int[] { 0 };
     try {

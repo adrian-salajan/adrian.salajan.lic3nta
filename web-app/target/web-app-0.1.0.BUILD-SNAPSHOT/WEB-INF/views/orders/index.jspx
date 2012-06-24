@@ -2,6 +2,7 @@
 <div xmlns:jsp="http://java.sun.com/JSP/Page" 
 xmlns:spring="http://www.springframework.org/tags"
  xmlns:c="http://java.sun.com/jsp/jstl/core" 
+ xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
  xmlns:security = "http://www.springframework.org/security/tags"
  xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
  xmlns:form="http://www.springframework.org/tags/form"
@@ -11,12 +12,15 @@ xmlns:spring="http://www.springframework.org/tags"
   <spring:message code="label_stock_index" htmlEscape="false" var="title"/>
   
    <security:authorize access="hasRole('ROLE_CLIENT')">
-	<table>
+	<table id="sorted-table">
+	<thead>
 	<th>Ref number</th>
 	<th>Price</th>
 	<th>Status</th>
 	<th>Cr. date</th>
 	<th>Needs attention</th>
+	</thead>
+	<tbody>
 		<c:forEach items="${orders}" var="order">
 			<tr>
 				<td><a href="/web-app/orders/${order.order.id}">${order.order.id}</a></td>
@@ -27,7 +31,7 @@ xmlns:spring="http://www.springframework.org/tags"
 				 		<img src="resources/images/negociere.png" />
 				 	</c:when>
 				 	<c:when test="${order.status == 'ready'}">
-				 		<img src="resources/images/ready.png" />
+				 		<img src="resources/images/done.png" />
 				 	</c:when>
 				 	<c:when test="${order.status == 'unprocessed'}">
 				 		<img src="resources/images/comandat.png" />
@@ -36,14 +40,14 @@ xmlns:spring="http://www.springframework.org/tags"
 				 		<img src="resources/images/procesare.png" />
 				 	</c:when>
 				 	<c:when test="${order.status == 'processed'}">
-				 		<img src="resources/images/done.png" />
+				 		<img src="resources/images/sold.png" />
 				 	</c:when>
 				 	<c:when test="${order.status == 'CANCELED'}">
 				 		<img src="resources/images/canceled.png" />
 				 	</c:when>
 				 </c:choose>
 				</td>
-				<td>${order.creationDate}</td>
+				<td><fmt:formatDate value="${order.creationDate}" type="date" pattern="dd.MM.yyyy" /></td>
 				<td>
 					<c:if test="${order.updateStatus == 'pu'}">
 						<img src="resources/images/updated.png" />
@@ -51,6 +55,7 @@ xmlns:spring="http://www.springframework.org/tags"
 				</td>
 			</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 	  	
    </security:authorize>

@@ -32,6 +32,7 @@ import ro.ubb.StockAdapter.gateway.exceptions.StockGatewayException;
 import web.converter.Converter;
 import web.entity.Region;
 import web.entity.Userrr;
+import web.integration.OfertaIntegrationService;
 import web.mvc.model.AddProduct;
 import web.mvc.model.Bascket;
 import web.mvc.model.HistoryOrder;
@@ -52,6 +53,9 @@ public class ProductController {
 	@Autowired
 	@Qualifier("orderGateway")
 	OrderGateway ofertaService;
+	
+	@Autowired
+	OfertaIntegrationService integrationService;
 	
 	@Autowired
 	SecurityUtils userDao;
@@ -154,6 +158,7 @@ public class ProductController {
 		}
 		
 		List<HistoryOrder> oferteStock = filterUnprocessed(oferteRegionale);
+		populateLocks(oferteStock);
 		
 		model.put("orders", oferteStock);
 		return "sales/orders";
@@ -169,6 +174,7 @@ public class ProductController {
 		}
 		
 		List<HistoryOrder> oferteStock = filterProcessing(oferteRegionale);
+		populateLocks(oferteStock);
 		
 		model.put("orders", oferteStock);
 		return "sales/orders";
@@ -184,6 +190,7 @@ public class ProductController {
 		}
 		
 		List<HistoryOrder> oferteStock = filterDone(oferteRegionale);
+		populateLocks(oferteStock);
 		
 		model.put("orders", oferteStock);
 		return "sales/orders";
@@ -220,5 +227,11 @@ public class ProductController {
 			}
 		}
 		return list;
+	}
+	
+	public void populateLocks(List<HistoryOrder> orders) {
+		for (HistoryOrder ho : orders) {
+			ho.setLocked(integrationService.getLock(ho.getOrder().getId()));
+		}
 	}
 }

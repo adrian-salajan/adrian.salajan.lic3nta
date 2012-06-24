@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -122,14 +124,20 @@ public class SalesController {
 	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String showSale(@PathVariable("id") Long id, ModelMap model,
-			@RequestParam(value="upd", required = false, defaultValue = " ") String updateStatus) {
+	public String showSale(Principal principal, @PathVariable("id") Long id, ModelMap model,
+			@RequestParam(value="upd", required = false, defaultValue = " ") String updateStatus,  HttpServletRequest request) {
 		Oferta oferta = ofertaService.getById(id);
 		HistoryOrder order = new HistoryOrder();
 		order.setOrder(oferta);
 		order.setUpdateStatus(integrationService.getStatus(id));
 		if (!"n".equals(updateStatus)) {
 			integrationService.updateStatus(id, IntegrationConstants.NOT_UPDATED);
+		}
+		if (userDao.getUser(principal.getName()).getRolee().equals("STOCK")) {
+			if (integrationService.getLock(id) == false ) {
+				integrationService.setLock(id, true);
+				request.getSession().setAttribute("lockId", id);
+			}
 		}
 		model.addAttribute("order", order);
 		return "sales/order";
@@ -155,11 +163,19 @@ public class SalesController {
 	}
 	
 	@RequestMapping(value = "/{id}/process", method = RequestMethod.GET)
-	public ModelAndView processOrder(@PathVariable("id") Long id) {
+	public ModelAndView processOrder(@PathVariable("id") Long id, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		Oferta processed = null;
 		try {
-			
+			Long sessionId = (Long) request.getSession().getAttribute("lockId");
+			if ( integrationService.getLock(id)) {
+				if (sessionId != null && id.longValue() == sessionId) {}
+				else {
+					View rv = new RedirectView("/web-app/product/ordersn", false);
+					mv.setView(rv);
+					return mv;
+				}
+			}
 			processed = ofertaService.getById(id);
 			for (domain.Product p : processed.getItems()) {
 				ProductIntegration pi = pintegrationService.getStockId(p.getId());
@@ -167,13 +183,16 @@ public class SalesController {
 				updateProductStock(product, p);
 				bascket.getCategoryProducts().remove(pi.getCategoryId());
 			}
+		
 			ofertaService.proceseazaComanda(id);
 			
 		} catch (StockGatewayException e) {
 			e.printStackTrace();
 			//go back to new orders
+			integrationService.setLock(id, false);
 			View rv = new RedirectView("/web-app/product/ordersn", false);
 			mv.setView(rv);
+			return mv;
 		}
 		//go to PDF
 		ReportService reportsService = new ReportService();

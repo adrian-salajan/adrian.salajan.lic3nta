@@ -16,7 +16,14 @@ xmlns:spring="http://www.springframework.org/tags"
   		<form:select path="selectedCategoryId" items="${categoryView.categories}" id="selectedForm"
   			itemLabel="name" itemValue="id" onchange="categoryChange()">
   		</form:select>
-  <table>
+  		
+  		 <security:authorize access="hasRole('ROLE_CLIENT')">
+	  			<c:url value="/bascket" var="bascketUrl"></c:url>
+	  	 <a style="float:right; margin-bottom: 2px;" href="${bascketUrl}">
+	  	 	<img src="/web-app/resources/images/show-cart.png" style="height:26px;" alt="show cart" /> Checkout
+	  	 </a>
+  	 </security:authorize>
+  <table  id="sorted-table">
   <THEAD>
   	<TR>
   		<TH>Name</TH>
@@ -52,7 +59,7 @@ xmlns:spring="http://www.springframework.org/tags"
 			
 						<security:authorize access="hasRole('ROLE_CLIENT')">
 			  				<td>	
-			  					<form:input path="products[${pstatus.index}].qty" />
+			  					<form:input path="products[${pstatus.index}].qty" size="4" /> <br/>
 			  					<form:errors path="products[${pstatus.index}].quantityValid"></form:errors>
 			  				</td>
 			  			</security:authorize>
@@ -61,14 +68,13 @@ xmlns:spring="http://www.springframework.org/tags"
   	
   </table>
   <security:authorize access="hasRole('ROLE_CLIENT')">
-  		<form:button value="Order" name="Order" >Order</form:button>
+  		<form:button value="Order" name="Order" class="button" style="width:150px; background-image:none;"  >
+  		<img src="/web-app/resources/images/add-to-cart.png" style="height:18px;" alt="add tocart" />
+  		<span>Add to cart</span></form:button>
   </security:authorize>
   </form:form>
   
-   <security:authorize access="hasRole('ROLE_CLIENT')">
-	  	<c:url value="/bascket" var="bascketUrl"></c:url>
-	  	<a href="${bascketUrl}">Show bascket </a>
-  	 </security:authorize>
+  
   	
 </div>
 

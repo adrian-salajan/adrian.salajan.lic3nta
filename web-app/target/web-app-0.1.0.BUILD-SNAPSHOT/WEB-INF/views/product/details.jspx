@@ -20,30 +20,31 @@ xmlns:spring="http://www.springframework.org/tags"
 			  	<h3>Name:   <form:input path="product.name" /></h3>
 			  <table>
 			  	<tr>
-			  		<td>Description:</td> <td> <form:input path="product.description" />	</td>
-			  	</tr>
-			  	<tr>
 			  		<td>Price:</td>  <td> <form:input path="product.price" /></td>
 			  	</tr>
 			  	<tr>
 			  		<td>Stock:</td> <td>  <form:input path="product.stock" />	</td>
 			  	</tr>
+			  	<tr>
+			  		<td>Description:</td> <td> <form:textarea path="product.description" rows="5" />	</td>
+			  	</tr>
 			  	</table>
-			  	<form:button>Update</form:button>
+			  	<form:button class="button">Update</form:button>
 		</form:form>
   	</security:authorize>
 
 	<c:if test="${not isStock}">
 		  		<h3>Name:   <c:out value="${productOrdered.product.name}" /></h3>
 		  <table>
-		  	<tr>
-		  		<td>Description:</td>	<td>${productOrdered.product.description}</td>
-		  	</tr>
+		  
 		  	<tr>
 		  		<td>Price:</td>	<td>${productOrdered.product.price}</td>
 		  	</tr>
 		  	<tr>
 		  		<td>Stock:</td>	<td>${productOrdered.product.stock}</td>
+		  	</tr>
+		  	<tr>
+		  		<td>Description:</td>	<td>${productOrdered.product.description}</td>
 		  	</tr>
 		  	</table>
 	</c:if>

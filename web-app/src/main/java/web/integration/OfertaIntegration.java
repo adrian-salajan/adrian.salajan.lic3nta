@@ -20,6 +20,9 @@ public class OfertaIntegration {
 	@Column
 	private String status;
 	
+	@Column(nullable = false)
+	private boolean locked = false;
+	
 	public Long getId() {
 		return id;
 	}
@@ -35,6 +38,16 @@ public class OfertaIntegration {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public boolean getLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
+	
+	
 
 
 }

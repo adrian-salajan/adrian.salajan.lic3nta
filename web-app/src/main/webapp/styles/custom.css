@@ -1,10 +1,13 @@
 @CHARSET "ISO-8859-1";
-.invisible {
-	visibility: hidden;
-}
 
 .invisible {
+	visibility: hidden;
+	display: none;
+}
+
+.visible {
 	visibility: visible;
+	display: block;
 }
 
 .menu-title {

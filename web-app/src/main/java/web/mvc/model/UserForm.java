@@ -11,8 +11,10 @@ public class UserForm {
 	
 	private String username;
 	
-	private Set<Region> regions;
-	private Set<Region> selectedRegions;
+	private List<String> regions;
+	private List<String> selectedRegions;
+	private Set<Region> unavailableRegions;
+	private Set<Region> dummyRegions = new TreeSet<Region>();
 	
 	private String selectedRole;
 	private List<String> roles;
@@ -24,22 +26,22 @@ public class UserForm {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public List<Region> getRegions() {
+	public List<String> getRegions() {
 		if (regions == null) {
-			regions = new TreeSet<Region>();
+			regions = new ArrayList<String>();
 		}
-		return new ArrayList<Region>(regions);
+		return regions;
 	}
-	public void setRegions(Set<Region> regions) {
+	public void setRegions(List<String> regions) {
 		this.regions = regions;
 	}
-	public List<Region> getSelectedRegions() {
+	public List<String> getSelectedRegions() {
 		if (selectedRegions == null) {
-			selectedRegions = new TreeSet<Region>();
+			selectedRegions = new ArrayList<String>();
 		}
-		return new ArrayList<Region>(selectedRegions);
+		return selectedRegions;
 	}
-	public void setSelectedRegions(Set<Region> selectedRegions) {
+	public void setSelectedRegions(List<String> selectedRegions) {
 		this.selectedRegions = selectedRegions;
 	}
 	public String getSelectedRole() {
@@ -57,6 +59,22 @@ public class UserForm {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
+	public Set<Region> getUnavailableRegions() {
+		return unavailableRegions;
+	}
+	public void setUnavailableRegions(Set<Region> unavailableRegions) {
+		this.unavailableRegions = unavailableRegions;
+	}
+	public Set<Region> getDummyRegions() {
+		return dummyRegions;
+	}
+	public void setDummyRegions(Set<Region> dummyRegions) {
+		this.dummyRegions = dummyRegions;
+	}
+	
+	
+	
+	
 	
 	
 	

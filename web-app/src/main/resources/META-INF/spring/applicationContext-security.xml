@@ -13,7 +13,7 @@
         	authentication-failure-url="/login?login_error=t"
         	default-target-url="/index/rolerd"  />
         
-        <logout logout-url="/resources/j_spring_security_logout" />
+        <logout logout-url="/logout" />
         
         
         
@@ -23,6 +23,7 @@
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll" />
     </http>
+
     <!-- Configure Authentication mechanism -->
     <authentication-manager>
         <!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->

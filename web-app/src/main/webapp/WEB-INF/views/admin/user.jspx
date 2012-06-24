@@ -11,18 +11,21 @@ xmlns:spring="http://www.springframework.org/tags"
   <jsp:output omit-xml-declaration="yes"/>
   <spring:message code="label_stock_index" htmlEscape="false" var="title"/>
    <security:authorize access="hasRole('ROLE_ADMIN')">
-   	<form:form action="user" modelAttribute="userform">
+   	<form:form action="/web-app/admin/user/update" method="POST" modelAttribute="userform">
    	User: ${userform.username}
+   	<form:hidden path="username" />
    	<br/>
    		Roles:
    		<ul>
-   		<form:radiobuttons path="selectedRole" items="${userform.roles}" element="li" />
+   		<form:radiobuttons path="selectedRole" items="${userform.roles}" element="li" cssClass="role" onchange="updateRegionsBySale()"  />
    		</ul>
-   		
-   		Regions:
-   		<ul>
-   		<form:checkboxes  path="selectedRegions" items="${userform.regions}" element="li" />
-   		</ul>
+   		<div id="user-regions">
+	   		Regions:
+	   		<ul>
+	   		<form:checkboxes  path="selectedRegions" items="${userform.regions}" element="li" cssClass="region"   />
+	   		<form:checkboxes  path="dummyRegions" items="${userform.unavailableRegions}" element="li" disabled="true"  cssClass="region"  />
+	   		</ul>
+   		</div>
 
 	<form:button value="Update" name="Update" class="button">Update</form:button>   	
    	</form:form>

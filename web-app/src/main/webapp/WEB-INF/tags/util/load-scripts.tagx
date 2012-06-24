@@ -49,9 +49,93 @@
    </script>
    
 <script type="text/javascript">
+var originalOptions = '--';
+var originalRole;
+function updateRegionsBySale() {
+	role = $("input:radio[name=selectedRole]:checked").val();
+	if (typeof role === "undefined")  
+		{}
+	else {
+			if (role == 'CLIENT') {
+				$('#user-regions').addClass('invisible');
+				$('#user-regions').removeClass('visible');
+			} else {
+				
+				if (role == originalRole) {
+					$('#user-regions ul').empty();
+					$('#user-regions ul').append(originalOptions);
+				} else {
+					if (role == 'SALES') {
+						$.getJSON('/web-app/admin/regionsForSale', function(response) {
+							 availableList = $('#user-regions ul');
+							 availableList.empty();
+									index = 0;
+								 	$.each(response.availableRegions, function(key, val) {
+								 		input = '<input name="selectedRegions" id="selectedRegions'+index+'" class="region" type="checkbox" value="' + val.name + '" />';
+								 		input = input + '<label for="selectedRegions' +index +'">' + val.name + '</label>';
+										availableList.append('<li>' + input + '</li>');
+									});
+								 index = 0;
+								 $.each(response.unAvailableRegions, function(key, val) {
+								 		input = '<input name="dummyRegions" id="dummyRegions'+index+'" disabled="disabled" class="region" type="checkbox"  value="' + val.name + '" />'
+								 		input = input + '<label for="dummyRegions' +index +'">' + val.name + '</label>';
+										availableList.append('<li>' + input + '</li>');
+									});
+							}
+						);
+					}
+				
+					if (role == 'STOCK') {
+						$.getJSON('/web-app/admin/regionsForSale', function(response) {
+							 availableList = $('#user-regions ul');
+							 availableList.empty();
+									index = 0;
+								 	$.each(response.availableRegions, function(key, val) {
+								 		input = '<input name="selectedRegions" id="selectedRegions'+index+'" class="region" type="checkbox" value="' + val.name + '" />';
+								 		input = input + '<label for="selectedRegions' +index +'">' + val.name + '</label>';
+										availableList.append('<li>' + input + '</li>');
+									});
+								 $.each(response.unAvailableRegions, function(key, val) {
+								 		input = '<input name="selectedRegions" id="selectedRegions'+index+'" class="region" type="checkbox"  value="' + val.name + '" />'
+								 		input = input + '<label for="dummyRegions' +index +'">' + val.name + '</label>';
+										availableList.append('<li>' + input + '</li>');
+									});
+							}
+						);
+					}
+				}
+				$('#user-regions').removeClass('invisible');
+				$('#user-regions').addClass('visible');
+			}
+				
+		}
+			
+}
+	
+
+function hideRegionsByRole() {
+	role = $("input:radio[name=selectedRole]:checked").val();
+		if (typeof role === "undefined")  
+			{}
+		else {
+				if (role == 'CLIENT') {
+					$('#user-regions').addClass('invisible');
+					$('#user-regions').removeClass('visible');
+				} else {
+					$('#user-regions').removeClass('invisible');
+					$('#user-regions').addClass('visible');
+				}
+				
+		}
+		
+}
+
  	$(document).ready(function() {
- 		
+ 		originalOptions =  $('#user-regions ul').children();
+ 		originalRole = $("input:radio[name=selectedRole]:checked").val();
  		$("#sorted-table").tablesorter();
+ 		hideRegionsByRole();
+ 		
  		
  		var address = $('#address');
  		if (address) {

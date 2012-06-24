@@ -71,7 +71,14 @@ xmlns:spring="http://www.springframework.org/tags"
 	<th>Cr. date</th>
 		<c:forEach items="${orders}" var="order">
 			<tr>
-				<td><a href="/web-app/sales/${order.order.id}">${order.order.id}</a></td>
+				<td>
+				<c:if test="${order.locked}">
+					${order.order.id}<img src="/web-app/resources/images/lock.gif" style="height: 12px;" />
+				</c:if>
+				<c:if test="${!order.locked}">
+					<a href="/web-app/sales/${order.order.id}">${order.order.id}</a>
+				</c:if>
+				</td>
 				<td>${order.order.comanda.shipAddressRegion}</td>
 				<td>${order.price}</td>
 				<td>

@@ -30,8 +30,8 @@ xmlns:spring="http://www.springframework.org/tags"
 		  <table>
 		  	<tr>
 		  		<td>Shipment region:</td>
-		  		<td><form:select path="region">
-		  				<form:options items="${shipmentPreferencesForm.regions}"    />
+		  		<td><form:select path="region" items="${shipmentPreferencesForm.regions}"  
+		  		itemLabel="name" itemValue="name">
 		  			</form:select>
 		  		</td>
 		  	</tr>

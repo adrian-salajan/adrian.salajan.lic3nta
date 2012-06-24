@@ -189,9 +189,9 @@ public final class header_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.UrlTag _jspx_th_spring_005furl_005f3 = (org.springframework.web.servlet.tags.UrlTag) _005fjspx_005ftagPool_005fspring_005furl_0026_005fvar_005fvalue_005fnobody.get(org.springframework.web.servlet.tags.UrlTag.class);
     _jspx_th_spring_005furl_005f3.setPageContext(_jspx_page_context);
     _jspx_th_spring_005furl_005f3.setParent(null);
-    // /WEB-INF/views/header.jspx(8,74) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005furl_005f3.setValue("/resources/j_spring_security_logout");
-    // /WEB-INF/views/header.jspx(8,74) name = var type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/views/header.jspx(8,46) name = value type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005furl_005f3.setValue("/logout");
+    // /WEB-INF/views/header.jspx(8,46) name = var type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005furl_005f3.setVar("logout");
     int[] _jspx_push_body_count_spring_005furl_005f3 = new int[] { 0 };
     try {

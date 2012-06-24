@@ -10,6 +10,7 @@
   <spring:url value="/resources/spring/Spring-Dojo.js" var="spring_dojo_url" />
   <spring:url value="/resources/images/favicon.ico" var="favicon" />
   <spring:url value="/resources/js/jquery.min.js" var="jq" />
+   <spring:url value="/resources/js/jquery.tablesorter.js" var="tablesorter" />
   <spring:url value="/resources/styles/custom.css" var="customcss" />
   
   
@@ -30,6 +31,7 @@
   <script src="${spring_url}" type="text/javascript"><!-- /required for FF3 and Opera -->	</script>
   <script src="${spring_dojo_url}" type="text/javascript"><!-- required for FF3 and Opera -->	</script>
   <script src="${jq}" type="text/javascript"><!-- required for FF3 and Opera -->	</script>
+   <script src="${tablesorter}" type="text/javascript"><!-- required for FF3 and Opera -->	</script>
   <script language="JavaScript" type="text/javascript">dojo.require("dojo.parser");		</script>
   
      <script type="text/javascript">
@@ -47,7 +49,36 @@
    </script>
    
 <script type="text/javascript">
+function hideRegionsByRole() {
+	role = $("input:radio[name=selectedRole]:checked").val();
+		if (typeof role === "undefined")  
+			{}
+		else {
+			if (role == 'CLIENT') {
+				$('#user-regions').addClass('invisible');
+				$('#user-regions').removeClass('visible');
+			} else {
+				
+				if (role == 'SALES') {
+					$.getJSON('/web-app/admin/regionsForSale'), function(response) {
+						alert(response);
+						}
+					)
+				}
+				$('#user-regions').removeClass('invisible');
+				$('#user-regions').addClass('visible');
+			}
+				
+			}
+		}
+}
+
  	$(document).ready(function() {
+ 		
+ 		$("#sorted-table").tablesorter();
+ 		hideRegionsByRole();
+ 		
+ 		
  		var address = $('#address');
  		if (address) {
  			if ($('#negotiation').attr('checked')) {
